@@ -16,11 +16,10 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow: hidden;
-            background: #0A0F1A;
+            background: #0A192F;
             color: #fff;
         }
 
-        /* Canvas 3D Background */
         #canvas-container {
             position: fixed;
             top: 0;
@@ -30,7 +29,6 @@
             z-index: 0;
         }
 
-        /* Premium UI Overlay */
         .ui-overlay {
             position: relative;
             z-index: 100;
@@ -50,23 +48,16 @@
         }
 
         @keyframes floatIn {
-            0% {
-                opacity: 0;
-                transform: translateY(60px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            0% { opacity: 0; transform: translateY(60px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Premium Glass Card */
         .greeting-card {
-            background: rgba(10, 20, 35, 0.65);
+            background: rgba(10, 25, 47, 0.7);
             backdrop-filter: blur(20px);
-            border-radius: 56px;
+            border-radius: 48px;
             border: 1px solid rgba(102, 252, 241, 0.3);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(102, 252, 241, 0.2) inset, 0 0 40px rgba(102, 252, 241, 0.1);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(102, 252, 241, 0.15) inset;
             padding: 48px 40px;
             text-align: center;
             transition: all 0.4s ease;
@@ -74,10 +65,9 @@
 
         .greeting-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 50px 90px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(102, 252, 241, 0.3) inset;
+            box-shadow: 0 50px 90px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(102, 252, 241, 0.25) inset;
         }
 
-        /* Success Icon */
         .success-icon {
             width: 100px;
             height: 100px;
@@ -92,14 +82,8 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(102, 252, 241, 0.4);
-                border-color: rgba(102, 252, 241, 0.6);
-            }
-            50% {
-                box-shadow: 0 0 0 25px rgba(102, 252, 241, 0);
-                border-color: rgba(102, 252, 241, 1);
-            }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(102, 252, 241, 0.4); border-color: rgba(102, 252, 241, 0.6); }
+            50% { box-shadow: 0 0 0 20px rgba(102, 252, 241, 0); border-color: rgba(102, 252, 241, 1); }
         }
 
         .success-icon i {
@@ -110,7 +94,6 @@
             color: transparent;
         }
 
-        /* Typography */
         .greeting-title {
             font-size: 2.2rem;
             font-weight: 800;
@@ -119,21 +102,14 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 12px;
-            letter-spacing: -0.5px;
         }
 
         .student-name {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #66FCF1;
             margin-bottom: 16px;
             text-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
-            animation: textGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes textGlow {
-            0%, 100% { text-shadow: 0 0 10px rgba(102, 252, 241, 0.3); }
-            50% { text-shadow: 0 0 30px rgba(102, 252, 241, 0.8); }
         }
 
         .application-id {
@@ -146,14 +122,11 @@
             font-size: 0.85rem;
             color: #66FCF1;
             border: 1px solid rgba(102, 252, 241, 0.3);
-            letter-spacing: 1px;
-            backdrop-filter: blur(5px);
         }
 
-        /* Reply Section */
         .reply-section {
             background: linear-gradient(135deg, rgba(102, 252, 241, 0.08), rgba(195, 7, 63, 0.05));
-            border-radius: 40px;
+            border-radius: 32px;
             padding: 28px;
             margin: 30px 0;
             border: 1px solid rgba(102, 252, 241, 0.25);
@@ -179,7 +152,7 @@
         }
 
         .reply-time {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             background: linear-gradient(135deg, #66FCF1, #C3073F);
             -webkit-background-clip: text;
@@ -193,7 +166,7 @@
         .reply-label {
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             color: #9BB4D4;
             margin-bottom: 8px;
             position: relative;
@@ -207,7 +180,6 @@
             z-index: 1;
         }
 
-        /* Countdown */
         .countdown {
             display: flex;
             justify-content: center;
@@ -224,12 +196,6 @@
             min-width: 90px;
             border: 1px solid rgba(102, 252, 241, 0.25);
             transition: all 0.3s;
-            animation: countdownPulse 2s infinite;
-        }
-
-        @keyframes countdownPulse {
-            0%, 100% { border-color: rgba(102, 252, 241, 0.25); }
-            50% { border-color: rgba(102, 252, 241, 0.6); }
         }
 
         .countdown-number {
@@ -244,10 +210,8 @@
             text-transform: uppercase;
             color: #9BB4D4;
             margin-top: 6px;
-            letter-spacing: 1px;
         }
 
-        /* Buttons */
         .button-group {
             display: flex;
             gap: 16px;
@@ -264,7 +228,6 @@
             color: #0A1428;
             font-weight: 700;
             font-size: 0.95rem;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -285,7 +248,6 @@
             color: #66FCF1;
             font-weight: 600;
             font-size: 0.95rem;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -296,10 +258,8 @@
         .btn-outline:hover {
             background: rgba(102, 252, 241, 0.1);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 252, 241, 0.2);
         }
 
-        /* Click Indicator for 3D Panda */
         .click-hint {
             position: fixed;
             bottom: 30px;
@@ -383,419 +343,389 @@
 
     <script type="module">
         import * as THREE from 'three';
-        import { OrbitControls } from 'https://unpkg.com/three@0.128.0/examples/jsm/controls/OrbitControls.js';
-
-        // ========== 3D PANDA CREATION ==========
+        
+        // ========== INITIALIZE SCENE (Matches your index.html style) ==========
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x0A0F1A);
-        scene.fog = new THREE.FogExp2(0x0A0F1A, 0.008);
-
-        // Camera
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 3, 8);
+        scene.background = new THREE.Color(0x0A192F);
+        scene.fog = new THREE.FogExp2(0x0A192F, 0.006);
+        
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 2.5, 8);
         camera.lookAt(0, 1.5, 0);
-
-        // Renderer
+        
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(container.clientWidth, container.clientHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         container.appendChild(renderer.domElement);
-
-        // Controls for interactive camera (optional)
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.autoRotate = false;
-        controls.enableZoom = true;
-        controls.enablePan = false;
-        controls.target.set(0, 1.5, 0);
-        controls.maxPolarAngle = Math.PI / 2.5;
-
-        // ========== LIGHTS ==========
-        // Ambient Light
-        const ambientLight = new THREE.AmbientLight(0x404060, 0.6);
+        
+        // ========== LIGHTS (Premium Realistic Lighting) ==========
+        const ambientLight = new THREE.AmbientLight(0x404060, 0.5);
         scene.add(ambientLight);
         
-        // Main Directional Light
         const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        mainLight.position.set(5, 10, 7);
+        mainLight.position.set(5, 8, 6);
         mainLight.castShadow = true;
         mainLight.receiveShadow = true;
         mainLight.shadow.mapSize.width = 1024;
         mainLight.shadow.mapSize.height = 1024;
         scene.add(mainLight);
         
-        // Fill Light
-        const fillLight = new THREE.PointLight(0x66FCF1, 0.5);
-        fillLight.position.set(-2, 3, 4);
+        const fillLight = new THREE.PointLight(0x66FCF1, 0.4);
+        fillLight.position.set(-3, 2, 4);
         scene.add(fillLight);
         
-        // Back Rim Light
-        const rimLight = new THREE.PointLight(0xC3073F, 0.4);
-        rimLight.position.set(0, 2, -4);
+        const backLight = new THREE.PointLight(0xC3073F, 0.3);
+        backLight.position.set(0, 2, -5);
+        scene.add(backLight);
+        
+        const rimLight = new THREE.PointLight(0x66FCF1, 0.5);
+        rimLight.position.set(2, 3, -3);
         scene.add(rimLight);
         
-        // Ground fill light
         const groundLight = new THREE.PointLight(0x2C5F8A, 0.3);
         groundLight.position.set(0, -1, 0);
         scene.add(groundLight);
         
-        // Floating particles for magic effect
-        const particleCount = 800;
-        const particleGeometry = new THREE.BufferGeometry();
-        const particlePositions = new Float32Array(particleCount * 3);
+        // ========== FLOATING PARTICLES (Matches your index.html style) ==========
+        const particleCount = 2000;
+        const particleGeo = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
         for (let i = 0; i < particleCount; i++) {
-            particlePositions[i*3] = (Math.random() - 0.5) * 25;
-            particlePositions[i*3+1] = (Math.random() - 0.5) * 15 + 2;
-            particlePositions[i*3+2] = (Math.random() - 0.5) * 20 - 5;
+            positions[i*3] = (Math.random() - 0.5) * 25;
+            positions[i*3+1] = (Math.random() - 0.5) * 15 + 1;
+            positions[i*3+2] = (Math.random() - 0.5) * 20 - 8;
         }
-        particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-        const particleMaterial = new THREE.PointsMaterial({
-            color: 0x66FCF1,
-            size: 0.05,
-            transparent: true,
-            opacity: 0.4,
-            blending: THREE.AdditiveBlending
-        });
-        const particles = new THREE.Points(particleGeometry, particleMaterial);
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const particleMat = new THREE.PointsMaterial({ color: 0x66FCF1, size: 0.045, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending });
+        const particles = new THREE.Points(particleGeo, particleMat);
         scene.add(particles);
         
-        // Ground reflection effect (invisible plane for shadows)
-        const groundPlane = new THREE.Mesh(
-            new THREE.PlaneGeometry(12, 12),
+        // Ground shadow plane
+        const shadowPlane = new THREE.Mesh(
+            new THREE.PlaneGeometry(8, 8),
             new THREE.ShadowMaterial({ opacity: 0.4, color: 0x000000, transparent: true, side: THREE.DoubleSide })
         );
-        groundPlane.rotation.x = -Math.PI / 2;
-        groundPlane.position.y = -1.2;
-        groundPlane.receiveShadow = true;
-        scene.add(groundPlane);
+        shadowPlane.rotation.x = -Math.PI / 2;
+        shadowPlane.position.y = -1.3;
+        shadowPlane.receiveShadow = true;
+        scene.add(shadowPlane);
         
-        // ========== CREATE 3D PANDA ==========
+        // ========== REALISTIC 3D PANDA MODEL ==========
         const pandaGroup = new THREE.Group();
         
-        // Body (black)
-        const bodyGeo = new THREE.SphereGeometry(0.9, 64, 64);
-        const blackMat = new THREE.MeshStandardMaterial({ color: 0x2C2C2C, roughness: 0.3, metalness: 0.1, emissive: 0x111111 });
-        const body = new THREE.Mesh(bodyGeo, blackMat);
-        body.position.y = -0.2;
+        // Materials
+        const blackFurMat = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: 0.55, metalness: 0.05, emissive: 0x111111, emissiveIntensity: 0.1 });
+        const whiteFurMat = new THREE.MeshStandardMaterial({ color: 0xf8f8f8, roughness: 0.5, metalness: 0.02 });
+        const darkFurMat = new THREE.MeshStandardMaterial({ color: 0x2a2a2a, roughness: 0.6 });
+        const noseMat = new THREE.MeshStandardMaterial({ color: 0x4a2a1a, roughness: 0.3, metalness: 0.1 });
+        
+        // Body (large oval)
+        const bodyGeo = new THREE.SphereGeometry(0.85, 64, 64);
+        const body = new THREE.Mesh(bodyGeo, blackFurMat);
+        body.scale.set(1.2, 0.9, 0.8);
+        body.position.y = -0.3;
         body.castShadow = true;
         body.receiveShadow = true;
         pandaGroup.add(body);
         
-        // Belly (white)
-        const bellyGeo = new THREE.SphereGeometry(0.7, 64, 64);
-        const whiteMat = new THREE.MeshStandardMaterial({ color: 0xF5F5F5, roughness: 0.4, metalness: 0.05 });
-        const belly = new THREE.Mesh(bellyGeo, whiteMat);
-        belly.position.y = -0.1;
-        belly.position.z = 0.4;
-        belly.castShadow = true;
-        pandaGroup.add(belly);
+        // Chest (white patch)
+        const chestGeo = new THREE.SphereGeometry(0.65, 64, 64);
+        const chest = new THREE.Mesh(chestGeo, whiteFurMat);
+        chest.scale.set(0.9, 0.7, 0.5);
+        chest.position.set(0, -0.1, 0.65);
+        chest.castShadow = true;
+        pandaGroup.add(chest);
         
         // Head
-        const headGeo = new THREE.SphereGeometry(0.75, 64, 64);
-        const headMat = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, roughness: 0.3 });
-        const head = new THREE.Mesh(headGeo, headMat);
-        head.position.y = 0.65;
-        head.position.z = 0.1;
+        const headGeo = new THREE.SphereGeometry(0.68, 64, 64);
+        const head = new THREE.Mesh(headGeo, whiteFurMat);
+        head.position.set(0, 0.65, 0.25);
         head.castShadow = true;
+        head.receiveShadow = true;
         pandaGroup.add(head);
         
-        // Left Ear (black)
-        const earGeo = new THREE.SphereGeometry(0.45, 48, 48);
-        const leftEar = new THREE.Mesh(earGeo, blackMat);
-        leftEar.position.set(-0.55, 1.15, 0.05);
+        // Left Ear
+        const earGeo = new THREE.SphereGeometry(0.42, 48, 48);
+        const leftEar = new THREE.Mesh(earGeo, blackFurMat);
+        leftEar.position.set(-0.55, 1.1, 0.15);
+        leftEar.scale.set(0.9, 0.7, 0.7);
         leftEar.castShadow = true;
         pandaGroup.add(leftEar);
         
         // Right Ear
-        const rightEar = new THREE.Mesh(earGeo, blackMat);
-        rightEar.position.set(0.55, 1.15, 0.05);
+        const rightEar = new THREE.Mesh(earGeo, blackFurMat);
+        rightEar.position.set(0.55, 1.1, 0.15);
+        rightEar.scale.set(0.9, 0.7, 0.7);
         rightEar.castShadow = true;
         pandaGroup.add(rightEar);
         
-        // Eye Patches (black)
-        const patchGeo = new THREE.SphereGeometry(0.35, 48, 48);
-        const leftPatch = new THREE.Mesh(patchGeo, blackMat);
-        leftPatch.position.set(-0.45, 0.85, 0.55);
+        // Left Eye Patch
+        const patchGeo = new THREE.SphereGeometry(0.32, 48, 48);
+        const leftPatch = new THREE.Mesh(patchGeo, blackFurMat);
+        leftPatch.position.set(-0.48, 0.8, 0.75);
+        leftPatch.scale.set(1.1, 0.9, 0.6);
         leftPatch.castShadow = true;
         pandaGroup.add(leftPatch);
         
-        const rightPatch = new THREE.Mesh(patchGeo, blackMat);
-        rightPatch.position.set(0.45, 0.85, 0.55);
+        // Right Eye Patch
+        const rightPatch = new THREE.Mesh(patchGeo, blackFurMat);
+        rightPatch.position.set(0.48, 0.8, 0.75);
+        rightPatch.scale.set(1.1, 0.9, 0.6);
         rightPatch.castShadow = true;
         pandaGroup.add(rightPatch);
         
-        // Eyes (white part)
-        const eyeWhiteGeo = new THREE.SphereGeometry(0.22, 48, 48);
-        const eyeWhiteMat = new THREE.MeshStandardMaterial({ color: 0xFFFFFF });
+        // Eyes (realistic with depth)
+        const eyeWhiteGeo = new THREE.SphereGeometry(0.2, 48, 48);
+        const eyeWhiteMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.1, metalness: 0.9 });
         const leftEyeWhite = new THREE.Mesh(eyeWhiteGeo, eyeWhiteMat);
-        leftEyeWhite.position.set(-0.45, 0.85, 0.85);
+        leftEyeWhite.position.set(-0.48, 0.82, 1.05);
         pandaGroup.add(leftEyeWhite);
         
         const rightEyeWhite = new THREE.Mesh(eyeWhiteGeo, eyeWhiteMat);
-        rightEyeWhite.position.set(0.45, 0.85, 0.85);
+        rightEyeWhite.position.set(0.48, 0.82, 1.05);
         pandaGroup.add(rightEyeWhite);
         
-        // Pupils (with glow effect)
+        // Pupils (dark with highlight)
         const pupilGeo = new THREE.SphereGeometry(0.12, 48, 48);
-        const pupilMat = new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0x111111 });
+        const pupilMat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 0.2, emissive: 0x111111 });
         const leftPupil = new THREE.Mesh(pupilGeo, pupilMat);
-        leftPupil.position.set(-0.45, 0.82, 1.05);
+        leftPupil.position.set(-0.48, 0.79, 1.18);
         pandaGroup.add(leftPupil);
         
         const rightPupil = new THREE.Mesh(pupilGeo, pupilMat);
-        rightPupil.position.set(0.45, 0.82, 1.05);
+        rightPupil.position.set(0.48, 0.79, 1.18);
         pandaGroup.add(rightPupil);
         
-        // Eye Glow (small highlight)
-        const highlightGeo = new THREE.SphereGeometry(0.05, 32, 32);
-        const highlightMat = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, emissive: 0x66FCF1, emissiveIntensity: 0.5 });
+        // Eye reflections (realistic shine)
+        const highlightGeo = new THREE.SphereGeometry(0.045, 32, 32);
+        const highlightMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0x88aaff, emissiveIntensity: 0.4 });
         const leftHighlight = new THREE.Mesh(highlightGeo, highlightMat);
-        leftHighlight.position.set(-0.5, 0.9, 1.1);
+        leftHighlight.position.set(-0.53, 0.87, 1.22);
         pandaGroup.add(leftHighlight);
         
         const rightHighlight = new THREE.Mesh(highlightGeo, highlightMat);
-        rightHighlight.position.set(0.4, 0.9, 1.1);
+        rightHighlight.position.set(0.43, 0.87, 1.22);
         pandaGroup.add(rightHighlight);
         
-        // Nose (black with pink tint)
-        const noseGeo = new THREE.SphereGeometry(0.12, 48, 48);
-        const noseMat = new THREE.MeshStandardMaterial({ color: 0xC3073F, emissive: 0x330000 });
+        // Nose (black, slightly wet look)
+        const noseGeo = new THREE.SphereGeometry(0.13, 48, 48);
         const nose = new THREE.Mesh(noseGeo, noseMat);
-        nose.position.set(0, 0.65, 1.05);
+        nose.position.set(0, 0.62, 1.15);
+        nose.castShadow = true;
         pandaGroup.add(nose);
         
-        // Mouth line
-        const mouthCurve = new THREE.CubicBezierCurve3(
-            new THREE.Vector3(-0.15, 0.55, 1.1),
-            new THREE.Vector3(-0.08, 0.5, 1.15),
-            new THREE.Vector3(0.08, 0.5, 1.15),
-            new THREE.Vector3(0.15, 0.55, 1.1)
-        );
-        const mouthGeometry = new THREE.TubeGeometry(mouthCurve, 20, 0.03, 8, false);
+        // Nose tip highlight
+        const noseTipGeo = new THREE.SphereGeometry(0.05, 32, 32);
+        const noseTipMat = new THREE.MeshStandardMaterial({ color: 0x331a0a, emissive: 0x442200 });
+        const noseTip = new THREE.Mesh(noseTipGeo, noseTipMat);
+        noseTip.position.set(0, 0.6, 1.25);
+        pandaGroup.add(noseTip);
+        
+        // Mouth (subtle curve)
+        const mouthGeo = new THREE.TorusGeometry(0.12, 0.025, 32, 64, Math.PI);
         const mouthMat = new THREE.MeshStandardMaterial({ color: 0x553322 });
-        const mouth = new THREE.Mesh(mouthGeometry, mouthMat);
+        const mouth = new THREE.Mesh(mouthGeo, mouthMat);
+        mouth.rotation.x = 0.2;
+        mouth.rotation.z = 0;
+        mouth.position.set(0, 0.52, 1.18);
         pandaGroup.add(mouth);
         
-        // Cheeks (pink blush)
-        const blushGeo = new THREE.SphereGeometry(0.12, 32, 32);
-        const blushMat = new THREE.MeshStandardMaterial({ color: 0xFFAAAA, emissive: 0x442222 });
-        const leftCheek = new THREE.Mesh(blushGeo, blushMat);
-        leftCheek.position.set(-0.65, 0.55, 0.85);
-        pandaGroup.add(leftCheek);
-        
-        const rightCheek = new THREE.Mesh(blushGeo, blushMat);
-        rightCheek.position.set(0.65, 0.55, 0.85);
-        pandaGroup.add(rightCheek);
-        
-        // Arms (simple cylinders)
-        const armGeo = new THREE.CylinderGeometry(0.2, 0.25, 0.7, 16);
-        const leftArm = new THREE.Mesh(armGeo, blackMat);
-        leftArm.position.set(-0.85, 0.2, 0.3);
-        leftArm.rotation.z = 0.5;
-        leftArm.rotation.x = 0.3;
+        // Arms (realistic cylinders)
+        const armGeo = new THREE.CylinderGeometry(0.22, 0.28, 0.75, 24);
+        const leftArm = new THREE.Mesh(armGeo, blackFurMat);
+        leftArm.position.set(-0.85, 0.15, 0.45);
+        leftArm.rotation.z = 0.6;
+        leftArm.rotation.x = 0.2;
         leftArm.castShadow = true;
         pandaGroup.add(leftArm);
         
-        const rightArm = new THREE.Mesh(armGeo, blackMat);
-        rightArm.position.set(0.85, 0.2, 0.3);
-        rightArm.rotation.z = -0.5;
-        rightArm.rotation.x = 0.3;
+        const rightArm = new THREE.Mesh(armGeo, blackFurMat);
+        rightArm.position.set(0.85, 0.15, 0.45);
+        rightArm.rotation.z = -0.6;
+        rightArm.rotation.x = 0.2;
         rightArm.castShadow = true;
         pandaGroup.add(rightArm);
         
         // Legs
-        const legGeo = new THREE.CylinderGeometry(0.25, 0.3, 0.6, 16);
-        const leftLeg = new THREE.Mesh(legGeo, blackMat);
-        leftLeg.position.set(-0.45, -0.55, 0.2);
+        const legGeo = new THREE.CylinderGeometry(0.26, 0.32, 0.65, 24);
+        const leftLeg = new THREE.Mesh(legGeo, blackFurMat);
+        leftLeg.position.set(-0.48, -0.65, 0.25);
         leftLeg.castShadow = true;
         pandaGroup.add(leftLeg);
         
-        const rightLeg = new THREE.Mesh(legGeo, blackMat);
-        rightLeg.position.set(0.45, -0.55, 0.2);
+        const rightLeg = new THREE.Mesh(legGeo, blackFurMat);
+        rightLeg.position.set(0.48, -0.65, 0.25);
         rightLeg.castShadow = true;
         pandaGroup.add(rightLeg);
         
-        // Add a glowing aura around panda
-        const auraGeometry = new THREE.SphereGeometry(1.4, 32, 32);
-        const auraMaterial = new THREE.MeshBasicMaterial({
-            color: 0x66FCF1,
-            transparent: true,
-            opacity: 0.08,
-            side: THREE.BackSide
-        });
-        const aura = new THREE.Mesh(auraGeometry, auraMaterial);
-        pandaGroup.add(aura);
+        // Subtle fur texture effect (small particles around panda)
+        const furParticleCount = 800;
+        const furParticleGeo = new THREE.BufferGeometry();
+        const furPositions = new Float32Array(furParticleCount * 3);
+        for (let i = 0; i < furParticleCount; i++) {
+            furPositions[i*3] = (Math.random() - 0.5) * 2.2;
+            furPositions[i*3+1] = Math.random() * 1.8 - 0.3;
+            furPositions[i*3+2] = (Math.random() - 0.5) * 1.8 + 0.3;
+        }
+        furParticleGeo.setAttribute('position', new THREE.BufferAttribute(furPositions, 3));
+        const furParticleMat = new THREE.PointsMaterial({ color: 0x2a2a2a, size: 0.012, transparent: true, opacity: 0.3 });
+        const furParticles = new THREE.Points(furParticleGeo, furParticleMat);
+        pandaGroup.add(furParticles);
         
         scene.add(pandaGroup);
         
-        // Floating particles around panda (sparkles)
-        const sparkleCount = 300;
-        const sparkleGeometry = new THREE.BufferGeometry();
-        const sparklePositions = new Float32Array(sparkleCount * 3);
-        for (let i = 0; i < sparkleCount; i++) {
-            sparklePositions[i*3] = (Math.random() - 0.5) * 2.5;
-            sparklePositions[i*3+1] = Math.random() * 2;
-            sparklePositions[i*3+2] = (Math.random() - 0.5) * 2 + 0.5;
-        }
-        sparkleGeometry.setAttribute('position', new THREE.BufferAttribute(sparklePositions, 3));
-        const sparkleMat = new THREE.PointsMaterial({
-            color: 0x66FCF1,
-            size: 0.03,
-            transparent: true,
-            blending: THREE.AdditiveBlending
+        // ========== MOUSE PARALLAX EFFECT (Matches your index.html style) ==========
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = (e.clientY / window.innerHeight) * 2 - 1;
         });
-        const sparkles = new THREE.Points(sparkleGeometry, sparkleMat);
-        pandaGroup.add(sparkles);
         
-        // ========== ANIMATION VARIABLES ==========
-        let time = 0;
-        let walkPhase = 0;
+        // ========== WALKING ANIMATION ==========
+        let walkProgress = 0;
         let isWalking = true;
-        let targetPosition = 0;
-        let startPosition = -4;
-        let pandaWalked = false;
+        let armSwing = 0;
         
-        // Panda walk from left to center
-        pandaGroup.position.x = -4;
+        pandaGroup.position.x = -5;
         pandaGroup.position.y = 0;
         
-        // Animation loop
+        // ========== CELEBRATION EFFECT ==========
+        function createCelebration() {
+            const celebrationCount = 80;
+            for (let i = 0; i < celebrationCount; i++) {
+                const sparkle = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.04, 8, 8),
+                    new THREE.MeshStandardMaterial({ color: i % 2 === 0 ? 0x66FCF1 : 0xC3073F, emissive: i % 2 === 0 ? 0x226666 : 0x662222, emissiveIntensity: 0.6 })
+                );
+                sparkle.position.set(
+                    (Math.random() - 0.5) * 2.5,
+                    Math.random() * 2.5,
+                    (Math.random() - 0.5) * 2
+                );
+                pandaGroup.add(sparkle);
+                
+                let yPos = sparkle.position.y;
+                let life = 1;
+                const animateSparkle = setInterval(() => {
+                    yPos += 0.04;
+                    sparkle.position.y = yPos;
+                    sparkle.scale.multiplyScalar(0.96);
+                    life -= 0.02;
+                    if (yPos > 2.5 || sparkle.scale.x < 0.1) {
+                        clearInterval(animateSparkle);
+                        pandaGroup.remove(sparkle);
+                    }
+                }, 30);
+            }
+        }
+        
+        // ========== ANIMATION LOOP ==========
+        let time = 0;
+        let blinked = false;
+        
         function animate() {
             requestAnimationFrame(animate);
             time += 0.016;
-            walkPhase += 0.12;
+            armSwing += 0.15;
             
-            // Walking animation - move panda from left to center
+            // Panda walking animation
             if (isWalking && pandaGroup.position.x < 0) {
-                pandaGroup.position.x += 0.02;
-                
-                // Walking bounce effect
-                pandaGroup.position.y = Math.abs(Math.sin(walkPhase * 2)) * 0.05;
+                pandaGroup.position.x += 0.025;
+                pandaGroup.position.y = Math.sin(time * 8) * 0.03;
                 
                 // Arm swinging
                 if (leftArm && rightArm) {
-                    leftArm.rotation.x = 0.3 + Math.sin(walkPhase * 3) * 0.3;
-                    rightArm.rotation.x = 0.3 - Math.sin(walkPhase * 3) * 0.3;
+                    leftArm.rotation.x = 0.2 + Math.sin(armSwing) * 0.4;
+                    rightArm.rotation.x = 0.2 - Math.sin(armSwing) * 0.4;
                 }
+                
+                // Slight head bob
+                head.rotation.z = Math.sin(armSwing * 2) * 0.05;
             } else if (isWalking && pandaGroup.position.x >= 0) {
                 isWalking = false;
                 pandaGroup.position.x = 0;
-                pandaWalked = true;
-                
-                // Celebration effect - create floating hearts/particles
-                createCelebrationEffect();
+                createCelebration();
             }
             
-            // Idle animation (gentle sway)
+            // Idle animation
             if (!isWalking) {
-                pandaGroup.rotation.z = Math.sin(time * 0.5) * 0.03;
-                pandaGroup.position.y = Math.sin(time * 1.2) * 0.02;
+                pandaGroup.rotation.z = Math.sin(time * 0.8) * 0.02;
+                pandaGroup.position.y = Math.sin(time * 1.2) * 0.015;
+                head.rotation.z = Math.sin(time * 0.5) * 0.03;
                 
-                // Blink effect every 3 seconds
-                if (Math.floor(time * 2) % 180 === 0) {
-                    blinkPupils();
+                // Subtle ear movement
+                leftEar.rotation.z = Math.sin(time * 1.5) * 0.03;
+                rightEar.rotation.z = -Math.sin(time * 1.5) * 0.03;
+                
+                // Blink effect every 4 seconds
+                if (!blinked && Math.floor(time * 10) % 200 === 0) {
+                    blinked = true;
+                    leftPupil.scale.y = 0.05;
+                    rightPupil.scale.y = 0.05;
+                    setTimeout(() => {
+                        leftPupil.scale.y = 1;
+                        rightPupil.scale.y = 1;
+                        blinked = false;
+                    }, 120);
                 }
             }
             
-            // Rotate sparkles around panda
-            sparkles.rotation.y += 0.02;
-            sparkles.rotation.x = Math.sin(time * 0.5) * 0.1;
+            // Rotate fur particles
+            furParticles.rotation.y += 0.01;
+            furParticles.rotation.x = Math.sin(time * 0.3) * 0.1;
             
-            // Rotate particles
+            // Rotate background particles
             particles.rotation.y += 0.001;
             particles.rotation.x += 0.0005;
             
-            // Update controls
-            controls.update();
+            // Mouse parallax effect (like your index.html)
+            camera.position.x += (mouseX * 0.8 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 0.5 + 2 - camera.position.y) * 0.05;
+            camera.lookAt(0, 1.2, 0);
             
-            // Render
             renderer.render(scene, camera);
         }
         
-        function blinkPupils() {
-            if (leftPupil && rightPupil) {
-                leftPupil.scale.y = 0.05;
-                rightPupil.scale.y = 0.05;
-                setTimeout(() => {
-                    leftPupil.scale.y = 1;
-                    rightPupil.scale.y = 1;
-                }, 100);
-            }
-        }
+        animate();
         
-        function createCelebrationEffect() {
-            // Create floating heart particles
-            const heartCount = 50;
-            for (let i = 0; i < heartCount; i++) {
-                const heartGeometry = new THREE.SphereGeometry(0.05, 8, 8);
-                const heartMat = new THREE.MeshStandardMaterial({ 
-                    color: i % 2 === 0 ? 0x66FCF1 : 0xC3073F,
-                    emissive: i % 2 === 0 ? 0x226666 : 0x662222,
-                    emissiveIntensity: 0.5
-                });
-                const heart = new THREE.Mesh(heartGeometry, heartMat);
-                heart.position.set(
-                    (Math.random() - 0.5) * 2,
-                    Math.random() * 2,
-                    (Math.random() - 0.5) * 2
-                );
-                pandaGroup.add(heart);
-                
-                // Animate heart upward
-                let yPos = heart.position.y;
-                const animateHeart = setInterval(() => {
-                    yPos += 0.03;
-                    heart.position.y = yPos;
-                    heart.scale.multiplyScalar(0.98);
-                    if (yPos > 3 || heart.scale.x < 0.1) {
-                        clearInterval(animateHeart);
-                        pandaGroup.remove(heart);
-                    }
-                }, 50);
-            }
-        }
-        
-        // ========== CLICK HANDLER FOR PANDA ==========
+        // ========== PANDA CLICK HANDLER ==========
         const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
+        const clickMouse = new THREE.Vector2();
         
-        function onMouseClick(event) {
-            if (!pandaWalked) return;
+        function onPandaClick(event) {
+            if (isWalking) return;
             
-            mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
-            mouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+            clickMouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
+            clickMouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
             
-            raycaster.setFromCamera(mouse, camera);
+            raycaster.setFromCamera(clickMouse, camera);
             const intersects = raycaster.intersectObject(pandaGroup, true);
             
             if (intersects.length > 0) {
-                // Panda clicked - show premium modal
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.position = 'fixed';
+                ripple.style.left = event.clientX + 'px';
+                ripple.style.top = event.clientY + 'px';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.background = 'radial-gradient(circle, #66FCF1, transparent)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.zIndex = '2000';
+                ripple.style.animation = 'rippleExpand 0.6s ease-out forwards';
+                document.body.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+                
+                // Show modal
                 showReturnModal();
             }
         }
         
         function showReturnModal() {
-            // Create ripple effect
-            const ripple = document.createElement('div');
-            ripple.style.position = 'fixed';
-            ripple.style.top = '50%';
-            ripple.style.left = '50%';
-            ripple.style.width = '100px';
-            ripple.style.height = '100px';
-            ripple.style.background = 'radial-gradient(circle, #66FCF1, transparent)';
-            ripple.style.borderRadius = '50%';
-            ripple.style.transform = 'translate(-50%, -50%) scale(0)';
-            ripple.style.pointerEvents = 'none';
-            ripple.style.zIndex = '2000';
-            ripple.style.animation = 'rippleExpand 0.6s ease-out forwards';
-            document.body.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 600);
-            
-            // Create modal
             const modal = document.createElement('div');
             modal.style.position = 'fixed';
             modal.style.top = '0';
@@ -811,17 +741,12 @@
             modal.style.animation = 'fadeIn 0.3s ease';
             
             modal.innerHTML = `
-                <div style="background: linear-gradient(135deg, #0F1A2F, #1A2A3F); border-radius: 56px; padding: 45px; max-width: 500px; width: 90%; border: 2px solid #66FCF1; box-shadow: 0 40px 80px rgba(0,0,0,0.5); text-align: center; animation: slideUpModal 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);">
-                    <div style="position: relative; margin-bottom: 25px;">
-                        <i class="fas fa-panda" style="font-size: 70px; color: #66FCF1; filter: drop-shadow(0 0 20px rgba(102,252,241,0.5));"></i>
-                        <div style="position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; background: #C3073F; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 1s infinite;">
-                            <i class="fas fa-heart" style="font-size: 16px; color: white;"></i>
-                        </div>
-                    </div>
+                <div style="background: linear-gradient(135deg, #0F1A2F, #1A2A3F); border-radius: 48px; padding: 45px; max-width: 500px; width: 90%; border: 2px solid #66FCF1; box-shadow: 0 40px 80px rgba(0,0,0,0.5); text-align: center; animation: slideUpModal 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);">
+                    <i class="fas fa-panda" style="font-size: 70px; color: #66FCF1; filter: drop-shadow(0 0 20px rgba(102,252,241,0.5)); margin-bottom: 20px; display: block;"></i>
                     <h2 style="color: #66FCF1; margin-bottom: 15px; font-size: 1.8rem;">Welcome Back!</h2>
                     <p style="color: #CCDEFF; margin-bottom: 25px; line-height: 1.6;">Ready to complete your application journey? Our team is excited to review your profile.</p>
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <button id="modalRedirectBtn" style="background: linear-gradient(135deg, #66FCF1, #2C5F8A); border: none; padding: 14px 32px; border-radius: 50px; color: #0A1428; font-weight: bold; cursor: pointer; flex: 1; font-size: 1rem;">
+                        <button id="modalRedirectBtn" style="background: linear-gradient(135deg, #66FCF1, #2C5F8A); border: none; padding: 14px 32px; border-radius: 50px; color: #0A1428; font-weight: bold; cursor: pointer; font-size: 1rem;">
                             <i class="fas fa-paper-plane"></i> Continue Application
                         </button>
                         <button id="modalCloseBtn" style="background: transparent; border: 2px solid #66FCF1; padding: 14px 28px; border-radius: 50px; color: #66FCF1; cursor: pointer;">
@@ -847,8 +772,8 @@
         const style = document.createElement('style');
         style.textContent = `
             @keyframes rippleExpand {
-                0% { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
-                100% { transform: translate(-50%, -50%) scale(20); opacity: 0; }
+                0% { transform: scale(0); opacity: 0.8; }
+                100% { transform: scale(50); opacity: 0; }
             }
             @keyframes fadeIn {
                 from { opacity: 0; }
@@ -861,16 +786,19 @@
                 from { transform: translateY(50px); opacity: 0; }
                 to { transform: translateY(0); opacity: 1; }
             }
-            @keyframes pulse {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.1); }
-            }
         `;
         document.head.appendChild(style);
         
-        window.addEventListener('click', onMouseClick);
+        window.addEventListener('click', onPandaClick);
         
-        // ========== PERSISTENT COUNTDOWN TIMER ==========
+        // ========== RESIZE HANDLER (Matches your index.html style) ==========
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+        
+        // ========== COUNTDOWN TIMER ==========
         function getStoredTargetTime() {
             let targetTime = localStorage.getItem('sarr_reply_target_time');
             if (!targetTime) {
@@ -896,16 +824,16 @@
             const now = new Date().getTime();
             const distance = targetTime - now;
             
-            const hoursElement = document.getElementById('hours');
-            const minutesElement = document.getElementById('minutes');
-            const secondsElement = document.getElementById('seconds');
-            const replyTimeElement = document.getElementById('replyTime');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            const replyTimeEl = document.getElementById('replyTime');
             
             if (distance < 0) {
-                hoursElement.textContent = '00';
-                minutesElement.textContent = '00';
-                secondsElement.textContent = '00';
-                replyTimeElement.textContent = 'Ready!';
+                if (hoursEl) hoursEl.textContent = '00';
+                if (minutesEl) minutesEl.textContent = '00';
+                if (secondsEl) secondsEl.textContent = '00';
+                if (replyTimeEl) replyTimeEl.textContent = 'Ready!';
                 return;
             }
             
@@ -913,12 +841,12 @@
             const minutesLeft = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const secondsLeft = Math.floor((distance % (1000 * 60)) / 1000);
             
-            hoursElement.textContent = hoursLeft.toString().padStart(2, '0');
-            minutesElement.textContent = minutesLeft.toString().padStart(2, '0');
-            secondsElement.textContent = secondsLeft.toString().padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = hoursLeft.toString().padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = minutesLeft.toString().padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = secondsLeft.toString().padStart(2, '0');
             
             const totalHours = getStoredReplyHours();
-            replyTimeElement.textContent = `${totalHours} Hours ${minutesLeft} Min`;
+            if (replyTimeEl) replyTimeEl.textContent = `${totalHours} Hours ${minutesLeft} Min`;
         }
         
         // ========== GET URL PARAMETERS ==========
@@ -940,25 +868,24 @@
             }
         }
         
-        // ========== INITIALIZE ==========
+        // ========== INITIALIZE UI ==========
         document.addEventListener('DOMContentLoaded', () => {
             const params = getUrlParams();
             let studentName = formatName(params.name);
             const applicationId = params.applicationId || 'SARR-' + Date.now().toString(36).toUpperCase();
             
-            // Try localStorage fallback
-            if (!studentName || studentName === 'Valued Applicant') {
-                const savedData = localStorage.getItem('sarr_last_applicant');
-                if (savedData) {
-                    try {
-                        const data = JSON.parse(savedData);
-                        studentName = data.name || studentName;
-                    } catch(e) {}
-                }
+            const savedData = localStorage.getItem('sarr_last_applicant');
+            if ((!studentName || studentName === 'Valued Applicant') && savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    studentName = data.name || studentName;
+                } catch(e) {}
             }
             
-            document.getElementById('studentName').textContent = studentName;
-            document.getElementById('applicationId').textContent = applicationId;
+            const nameEl = document.getElementById('studentName');
+            const idEl = document.getElementById('applicationId');
+            if (nameEl) nameEl.textContent = studentName;
+            if (idEl) idEl.textContent = applicationId;
             
             localStorage.setItem('sarr_last_applicant', JSON.stringify({
                 name: studentName,
@@ -969,24 +896,16 @@
             updateCountdown();
             setInterval(updateCountdown, 1000);
             
-            document.getElementById('backToFormBtn').onclick = () => window.location.href = 'index.html';
-            document.getElementById('trackBtn').onclick = () => {
+            const backBtn = document.getElementById('backToFormBtn');
+            const trackBtn = document.getElementById('trackBtn');
+            
+            if (backBtn) backBtn.onclick = () => window.location.href = 'index.html';
+            if (trackBtn) trackBtn.onclick = () => {
                 alert(`📋 Application ID: ${applicationId}\n👤 Name: ${studentName}\n⏰ Expected Response: Within ${getStoredReplyHours()} hours\n\nPlease check your email for updates.`);
             };
         });
         
-        // Start animation
-        animate();
-        
-        // Handle window resize
-        window.addEventListener('resize', onWindowResize, false);
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-        
-        console.log('🎋 3D Panda loaded! Click on panda to return to form.');
+        console.log('🐼 Realistic 3D Panda loaded! Click on panda to return to form.');
     </script>
 </body>
 </html>
