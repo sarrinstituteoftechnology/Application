@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>SARR Institute | 3D Panda Greeting | Premium Experience</title>
+    <title>SARR Institute | Cinematic 3D Experience | Marvel-Level VFX</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -16,7 +16,7 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow: hidden;
-            background: #0A192F;
+            background: #050B14;
             color: #fff;
         }
 
@@ -44,46 +44,73 @@
             max-width: 600px;
             width: 100%;
             pointer-events: auto;
-            animation: floatIn 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            animation: cinematicFloat 1.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
-        @keyframes floatIn {
-            0% { opacity: 0; transform: translateY(60px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes cinematicFloat {
+            0% { opacity: 0; transform: translateY(80px) scale(0.95) rotateX(-10deg); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0) scale(1) rotateX(0); filter: blur(0); }
         }
 
         .greeting-card {
-            background: rgba(10, 25, 47, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 48px;
-            border: 1px solid rgba(102, 252, 241, 0.3);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(102, 252, 241, 0.15) inset;
+            background: rgba(5, 15, 25, 0.75);
+            backdrop-filter: blur(25px);
+            border-radius: 56px;
+            border: 1px solid rgba(102, 252, 241, 0.4);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(102, 252, 241, 0.2) inset, 0 0 60px rgba(102, 252, 241, 0.2);
             padding: 48px 40px;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            animation: cardGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes cardGlow {
+            0%, 100% { box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(102, 252, 241, 0.2) inset, 0 0 40px rgba(102, 252, 241, 0.1); }
+            50% { box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(102, 252, 241, 0.4) inset, 0 0 80px rgba(102, 252, 241, 0.3); }
         }
 
         .greeting-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 50px 90px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(102, 252, 241, 0.25) inset;
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(102, 252, 241, 0.7);
         }
 
         .success-icon {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, rgba(102, 252, 241, 0.2), rgba(195, 7, 63, 0.2));
+            background: linear-gradient(135deg, rgba(102, 252, 241, 0.25), rgba(195, 7, 63, 0.25));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 30px;
-            border: 2px solid rgba(102, 252, 241, 0.6);
-            animation: pulseGlow 2s ease-in-out infinite;
+            border: 2px solid rgba(102, 252, 241, 0.8);
+            animation: cinematicPulse 2s ease-in-out infinite, rotateGlow 4s linear infinite;
+            position: relative;
         }
 
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(102, 252, 241, 0.4); border-color: rgba(102, 252, 241, 0.6); }
-            50% { box-shadow: 0 0 0 20px rgba(102, 252, 241, 0); border-color: rgba(102, 252, 241, 1); }
+        .success-icon::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102,252,241,0.4), transparent);
+            animation: ringPulse 2s ease-out infinite;
+        }
+
+        @keyframes cinematicPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(102, 252, 241, 0.5), 0 0 0 0 rgba(195, 7, 63, 0.3); transform: scale(1); }
+            50% { box-shadow: 0 0 0 25px rgba(102, 252, 241, 0), 0 0 0 35px rgba(195, 7, 63, 0); transform: scale(1.05); }
+        }
+
+        @keyframes ringPulse {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        @keyframes rotateGlow {
+            from { filter: hue-rotate(0deg); }
+            to { filter: hue-rotate(360deg); }
         }
 
         .success-icon i {
@@ -92,28 +119,48 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            animation: iconShine 3s linear infinite;
+        }
+
+        @keyframes iconShine {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); text-shadow: 0 0 20px rgba(102,252,241,0.5); }
         }
 
         .greeting-title {
             font-size: 2.2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #FFFFFF, #66FCF1);
+            background: linear-gradient(135deg, #FFFFFF, #66FCF1, #C3073F);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 12px;
+            animation: titleWave 3s ease-in-out infinite;
+        }
+
+        @keyframes titleWave {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .student-name {
             font-size: 1.6rem;
             font-weight: 700;
-            color: #66FCF1;
+            background: linear-gradient(135deg, #66FCF1, #C3073F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 16px;
-            text-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+            animation: nameGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes nameGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(102,252,241,0.3)); }
+            50% { filter: drop-shadow(0 0 25px rgba(102,252,241,0.8)); }
         }
 
         .application-id {
-            background: rgba(102, 252, 241, 0.12);
+            background: rgba(102, 252, 241, 0.15);
             border-radius: 40px;
             padding: 10px 24px;
             display: inline-block;
@@ -121,17 +168,20 @@
             font-family: monospace;
             font-size: 0.85rem;
             color: #66FCF1;
-            border: 1px solid rgba(102, 252, 241, 0.3);
+            border: 1px solid rgba(102, 252, 241, 0.4);
+            backdrop-filter: blur(5px);
+            letter-spacing: 2px;
         }
 
         .reply-section {
-            background: linear-gradient(135deg, rgba(102, 252, 241, 0.08), rgba(195, 7, 63, 0.05));
+            background: linear-gradient(135deg, rgba(102, 252, 241, 0.12), rgba(195, 7, 63, 0.08));
             border-radius: 32px;
             padding: 28px;
             margin: 30px 0;
-            border: 1px solid rgba(102, 252, 241, 0.25);
+            border: 1px solid rgba(102, 252, 241, 0.35);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(5px);
         }
 
         .reply-section::before {
@@ -141,18 +191,18 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(102, 252, 241, 0.1), transparent 70%);
-            animation: shimmerSlow 6s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(102, 252, 241, 0.15), transparent 70%);
+            animation: cinematicShimmer 8s ease-in-out infinite;
         }
 
-        @keyframes shimmerSlow {
-            0% { transform: translate(-20%, -20%) rotate(0deg); opacity: 0; }
-            50% { transform: translate(0%, 0%) rotate(5deg); opacity: 0.5; }
-            100% { transform: translate(20%, 20%) rotate(10deg); opacity: 0; }
+        @keyframes cinematicShimmer {
+            0% { transform: translate(-30%, -30%) rotate(0deg); opacity: 0; }
+            50% { transform: translate(0%, 0%) rotate(10deg); opacity: 0.6; }
+            100% { transform: translate(30%, 30%) rotate(20deg); opacity: 0; }
         }
 
         .reply-time {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             background: linear-gradient(135deg, #66FCF1, #C3073F);
             -webkit-background-clip: text;
@@ -161,23 +211,12 @@
             margin-bottom: 8px;
             position: relative;
             z-index: 1;
+            animation: timePulse 1.5s ease-in-out infinite;
         }
 
-        .reply-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #9BB4D4;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .reply-description {
-            color: #CCDEFF;
-            font-size: 0.85rem;
-            position: relative;
-            z-index: 1;
+        @keyframes timePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.02); }
         }
 
         .countdown {
@@ -189,27 +228,39 @@
         }
 
         .countdown-item {
-            background: rgba(10, 20, 35, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 15px 22px;
-            min-width: 90px;
-            border: 1px solid rgba(102, 252, 241, 0.25);
+            background: rgba(5, 15, 25, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 28px;
+            padding: 18px 24px;
+            min-width: 100px;
+            border: 1px solid rgba(102, 252, 241, 0.35);
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102,252,241,0.1), transparent);
+            animation: countdownGlow 3s linear infinite;
+        }
+
+        @keyframes countdownGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .countdown-number {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: #66FCF1;
             font-family: monospace;
-        }
-
-        .countdown-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: #9BB4D4;
-            margin-top: 6px;
+            text-shadow: 0 0 15px rgba(102,252,241,0.5);
         }
 
         .button-group {
@@ -231,13 +282,33 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(102, 252, 241, 0.4);
+            box-shadow: 0 15px 35px rgba(102, 252, 241, 0.5);
         }
 
         .btn-outline {
@@ -253,11 +324,15 @@
             gap: 10px;
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-outline:hover {
-            background: rgba(102, 252, 241, 0.1);
+            background: rgba(102, 252, 241, 0.2);
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 252, 241, 0.3);
+            border-color: rgba(102, 252, 241, 0.8);
         }
 
         .click-hint {
@@ -265,22 +340,24 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 10px 24px;
-            border-radius: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            padding: 12px 28px;
+            border-radius: 60px;
             color: #66FCF1;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             z-index: 200;
             pointer-events: none;
-            animation: bounceHint 1.5s ease-in-out infinite;
-            border: 1px solid rgba(102, 252, 241, 0.3);
+            animation: cinematicHint 2s ease-in-out infinite;
+            border: 1px solid rgba(102, 252, 241, 0.5);
             white-space: nowrap;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
 
-        @keyframes bounceHint {
-            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
-            50% { transform: translateX(-50%) translateY(-8px); opacity: 1; }
+        @keyframes cinematicHint {
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; box-shadow: 0 0 10px rgba(102,252,241,0.3); }
+            50% { transform: translateX(-50%) translateY(-10px); opacity: 1; box-shadow: 0 0 30px rgba(102,252,241,0.8); }
         }
 
         @media (max-width: 600px) {
@@ -288,9 +365,8 @@
             .greeting-title { font-size: 1.6rem; }
             .student-name { font-size: 1.3rem; }
             .reply-time { font-size: 1.5rem; }
-            .countdown-item { padding: 10px 16px; min-width: 70px; }
-            .countdown-number { font-size: 1.4rem; }
-            .click-hint { font-size: 0.7rem; padding: 6px 16px; white-space: nowrap; bottom: 15px; }
+            .countdown-item { padding: 12px 18px; min-width: 80px; }
+            .countdown-number { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -330,7 +406,7 @@
     </div>
     
     <div class="click-hint" id="clickHint">
-        <i class="fas fa-hand-pointer"></i> Click on Panda to Return to Form
+        <i class="fas fa-hand-pointer"></i> INTERACT WITH THE SACRED PANDA
     </div>
 
     <script type="importmap">
@@ -343,414 +419,535 @@
 
     <script type="module">
         import * as THREE from 'three';
+        import { OrbitControls } from 'https://unpkg.com/three@0.128.0/examples/jsm/controls/OrbitControls.js';
         
-        // ========== INITIALIZE SCENE (Matches your index.html style) ==========
+        // ========== CINEMATIC SCENE SETUP ==========
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x0A192F);
-        scene.fog = new THREE.FogExp2(0x0A192F, 0.006);
+        scene.background = new THREE.Color(0x050B14);
+        scene.fog = new THREE.FogExp2(0x050B14, 0.008);
         
         const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.set(0, 2.5, 8);
-        camera.lookAt(0, 1.5, 0);
+        camera.position.set(0, 2.2, 7.5);
+        camera.lookAt(0, 1.2, 0);
         
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
         renderer.setSize(container.clientWidth, container.clientHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
         
-        // ========== LIGHTS (Premium Realistic Lighting) ==========
-        const ambientLight = new THREE.AmbientLight(0x404060, 0.5);
-        scene.add(ambientLight);
+        // Cinematic Controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = false;
+        controls.enableZoom = true;
+        controls.zoomSpeed = 0.8;
+        controls.enablePan = false;
+        controls.target.set(0, 1.2, 0);
+        controls.maxPolarAngle = Math.PI / 2.2;
         
-        const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        mainLight.position.set(5, 8, 6);
-        mainLight.castShadow = true;
-        mainLight.receiveShadow = true;
-        mainLight.shadow.mapSize.width = 1024;
-        mainLight.shadow.mapSize.height = 1024;
-        scene.add(mainLight);
+        // ========== VOLUMETRIC LIGHTING ==========
+        // Main Key Light (Dramatic)
+        const keyLight = new THREE.DirectionalLight(0xffcc88, 1.2);
+        keyLight.position.set(4, 5, 3);
+        keyLight.castShadow = true;
+        keyLight.receiveShadow = true;
+        keyLight.shadow.mapSize.width = 2048;
+        keyLight.shadow.mapSize.height = 2048;
+        keyLight.shadow.camera.near = 0.5;
+        keyLight.shadow.camera.far = 12;
+        keyLight.shadow.camera.left = -5;
+        keyLight.shadow.camera.right = 5;
+        keyLight.shadow.camera.top = 5;
+        keyLight.shadow.camera.bottom = -5;
+        scene.add(keyLight);
         
-        const fillLight = new THREE.PointLight(0x66FCF1, 0.4);
-        fillLight.position.set(-3, 2, 4);
+        // Fill Light (Cool)
+        const fillLight = new THREE.PointLight(0x66FCF1, 0.5);
+        fillLight.position.set(-2, 3, 4);
         scene.add(fillLight);
         
-        const backLight = new THREE.PointLight(0xC3073F, 0.3);
-        backLight.position.set(0, 2, -5);
-        scene.add(backLight);
-        
-        const rimLight = new THREE.PointLight(0x66FCF1, 0.5);
-        rimLight.position.set(2, 3, -3);
+        // Rim Light (Warm Edge)
+        const rimLight = new THREE.PointLight(0xC3073F, 0.7);
+        rimLight.position.set(2, 3, -4);
         scene.add(rimLight);
         
-        const groundLight = new THREE.PointLight(0x2C5F8A, 0.3);
-        groundLight.position.set(0, -1, 0);
-        scene.add(groundLight);
+        // Back Light (Dramatic Silhouette)
+        const backLight = new THREE.PointLight(0x66FCF1, 0.6);
+        backLight.position.set(0, 2.5, -5);
+        scene.add(backLight);
         
-        // ========== FLOATING PARTICLES (Matches your index.html style) ==========
-        const particleCount = 2000;
+        // Ground Fill
+        const groundFill = new THREE.PointLight(0x2C5F8A, 0.4);
+        groundFill.position.set(0, -1, 0);
+        scene.add(groundFill);
+        
+        // Volumetric Light (Fog Lights)
+        const volumetricLight = new THREE.PointLight(0x66FCF1, 0.3);
+        volumetricLight.position.set(0, 1, 2);
+        scene.add(volumetricLight);
+        
+        // ========== PARTICLE SYSTEMS (Cinematic Dust & Magic) ==========
+        // Main Particle Field
+        const particleCount = 3500;
         const particleGeo = new THREE.BufferGeometry();
         const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
         for (let i = 0; i < particleCount; i++) {
-            positions[i*3] = (Math.random() - 0.5) * 25;
-            positions[i*3+1] = (Math.random() - 0.5) * 15 + 1;
-            positions[i*3+2] = (Math.random() - 0.5) * 20 - 8;
+            positions[i*3] = (Math.random() - 0.5) * 28;
+            positions[i*3+1] = (Math.random() - 0.5) * 18 + 1;
+            positions[i*3+2] = (Math.random() - 0.5) * 22 - 8;
+            const colorVal = Math.random();
+            colors[i*3] = colorVal * 0.4 + 0.4;
+            colors[i*3+1] = colorVal * 0.8 + 0.2;
+            colors[i*3+2] = colorVal * 1;
         }
         particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const particleMat = new THREE.PointsMaterial({ color: 0x66FCF1, size: 0.045, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending });
+        particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        const particleMat = new THREE.PointsMaterial({ size: 0.045, vertexColors: true, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending });
         const particles = new THREE.Points(particleGeo, particleMat);
         scene.add(particles);
         
-        // Ground shadow plane
-        const shadowPlane = new THREE.Mesh(
-            new THREE.PlaneGeometry(8, 8),
-            new THREE.ShadowMaterial({ opacity: 0.4, color: 0x000000, transparent: true, side: THREE.DoubleSide })
-        );
-        shadowPlane.rotation.x = -Math.PI / 2;
-        shadowPlane.position.y = -1.3;
-        shadowPlane.receiveShadow = true;
-        scene.add(shadowPlane);
+        // Floating Dust Particles (Closer)
+        const dustCount = 2000;
+        const dustGeo = new THREE.BufferGeometry();
+        const dustPositions = new Float32Array(dustCount * 3);
+        for (let i = 0; i < dustCount; i++) {
+            dustPositions[i*3] = (Math.random() - 0.5) * 12;
+            dustPositions[i*3+1] = Math.random() * 4;
+            dustPositions[i*3+2] = (Math.random() - 0.5) * 10 + 2;
+        }
+        dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+        const dustMat = new THREE.PointsMaterial({ color: 0x88aaff, size: 0.02, transparent: true, opacity: 0.2, blending: THREE.AdditiveBlending });
+        const dustParticles = new THREE.Points(dustGeo, dustMat);
+        scene.add(dustParticles);
         
-        // ========== REALISTIC 3D PANDA MODEL ==========
+        // ========== GROUND REFLECTION (Cinematic Floor) ==========
+        const groundPlane = new THREE.Mesh(
+            new THREE.PlaneGeometry(12, 12),
+            new THREE.MeshStandardMaterial({ color: 0x0A1428, roughness: 0.4, metalness: 0.7, emissive: 0x0A1A2A, emissiveIntensity: 0.2 })
+        );
+        groundPlane.rotation.x = -Math.PI / 2;
+        groundPlane.position.y = -1.4;
+        groundPlane.receiveShadow = true;
+        scene.add(groundPlane);
+        
+        // Reflection Glow Circle
+        const glowCircle = new THREE.Mesh(
+            new THREE.CircleGeometry(1.8, 32),
+            new THREE.MeshStandardMaterial({ color: 0x66FCF1, emissive: 0x66FCF1, emissiveIntensity: 0.15, transparent: true, opacity: 0.3, side: THREE.DoubleSide })
+        );
+        glowCircle.rotation.x = -Math.PI / 2;
+        glowCircle.position.y = -1.38;
+        scene.add(glowCircle);
+        
+        // ========== CINEMATIC PANDA MODEL (Hyper-Realistic) ==========
         const pandaGroup = new THREE.Group();
         
-        // Materials
-        const blackFurMat = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: 0.55, metalness: 0.05, emissive: 0x111111, emissiveIntensity: 0.1 });
-        const whiteFurMat = new THREE.MeshStandardMaterial({ color: 0xf8f8f8, roughness: 0.5, metalness: 0.02 });
-        const darkFurMat = new THREE.MeshStandardMaterial({ color: 0x2a2a2a, roughness: 0.6 });
-        const noseMat = new THREE.MeshStandardMaterial({ color: 0x4a2a1a, roughness: 0.3, metalness: 0.1 });
+        // Materials with Subsurface Scattering Effect
+        const blackFur = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.45, metalness: 0.08, emissive: 0x222222, emissiveIntensity: 0.08 });
+        const whiteFur = new THREE.MeshStandardMaterial({ color: 0xFAFAFA, roughness: 0.55, metalness: 0.02 });
+        const darkFur = new THREE.MeshStandardMaterial({ color: 0x2A2A2A, roughness: 0.5 });
+        const noseMaterial = new THREE.MeshStandardMaterial({ color: 0x3A2A1A, roughness: 0.25, metalness: 0.15 });
         
-        // Body (large oval)
-        const bodyGeo = new THREE.SphereGeometry(0.85, 64, 64);
-        const body = new THREE.Mesh(bodyGeo, blackFurMat);
-        body.scale.set(1.2, 0.9, 0.8);
-        body.position.y = -0.3;
+        // Body (Torso)
+        const bodyGeo = new THREE.SphereGeometry(0.9, 96, 96);
+        const body = new THREE.Mesh(bodyGeo, blackFur);
+        body.scale.set(1.25, 0.92, 0.85);
+        body.position.y = -0.35;
         body.castShadow = true;
         body.receiveShadow = true;
         pandaGroup.add(body);
         
-        // Chest (white patch)
-        const chestGeo = new THREE.SphereGeometry(0.65, 64, 64);
-        const chest = new THREE.Mesh(chestGeo, whiteFurMat);
-        chest.scale.set(0.9, 0.7, 0.5);
-        chest.position.set(0, -0.1, 0.65);
+        // Chest (White)
+        const chestGeo = new THREE.SphereGeometry(0.72, 96, 96);
+        const chest = new THREE.Mesh(chestGeo, whiteFur);
+        chest.scale.set(0.95, 0.75, 0.55);
+        chest.position.set(0, -0.15, 0.68);
         chest.castShadow = true;
         pandaGroup.add(chest);
         
-        // Head
-        const headGeo = new THREE.SphereGeometry(0.68, 64, 64);
-        const head = new THREE.Mesh(headGeo, whiteFurMat);
-        head.position.set(0, 0.65, 0.25);
+        // Head (Majestic)
+        const headGeo = new THREE.SphereGeometry(0.72, 128, 128);
+        const head = new THREE.Mesh(headGeo, whiteFur);
+        head.position.set(0, 0.68, 0.28);
         head.castShadow = true;
         head.receiveShadow = true;
         pandaGroup.add(head);
         
-        // Left Ear
-        const earGeo = new THREE.SphereGeometry(0.42, 48, 48);
-        const leftEar = new THREE.Mesh(earGeo, blackFurMat);
-        leftEar.position.set(-0.55, 1.1, 0.15);
-        leftEar.scale.set(0.9, 0.7, 0.7);
-        leftEar.castShadow = true;
-        pandaGroup.add(leftEar);
+        // Ears with Inner Detail
+        const earGeo = new THREE.SphereGeometry(0.45, 64, 64);
+        const leftEarOuter = new THREE.Mesh(earGeo, blackFur);
+        leftEarOuter.position.set(-0.58, 1.15, 0.18);
+        leftEarOuter.scale.set(0.88, 0.72, 0.68);
+        leftEarOuter.castShadow = true;
+        pandaGroup.add(leftEarOuter);
         
-        // Right Ear
-        const rightEar = new THREE.Mesh(earGeo, blackFurMat);
-        rightEar.position.set(0.55, 1.1, 0.15);
-        rightEar.scale.set(0.9, 0.7, 0.7);
-        rightEar.castShadow = true;
-        pandaGroup.add(rightEar);
+        const rightEarOuter = new THREE.Mesh(earGeo, blackFur);
+        rightEarOuter.position.set(0.58, 1.15, 0.18);
+        rightEarOuter.scale.set(0.88, 0.72, 0.68);
+        rightEarOuter.castShadow = true;
+        pandaGroup.add(rightEarOuter);
         
-        // Left Eye Patch
-        const patchGeo = new THREE.SphereGeometry(0.32, 48, 48);
-        const leftPatch = new THREE.Mesh(patchGeo, blackFurMat);
-        leftPatch.position.set(-0.48, 0.8, 0.75);
-        leftPatch.scale.set(1.1, 0.9, 0.6);
+        // Inner Ear (Pinkish)
+        const innerEarGeo = new THREE.SphereGeometry(0.28, 48, 48);
+        const innerEarMat = new THREE.MeshStandardMaterial({ color: 0xD8B4A0, roughness: 0.3 });
+        const leftInner = new THREE.Mesh(innerEarGeo, innerEarMat);
+        leftInner.position.set(-0.58, 1.12, 0.28);
+        leftInner.scale.set(0.75, 0.65, 0.55);
+        pandaGroup.add(leftInner);
+        
+        const rightInner = new THREE.Mesh(innerEarGeo, innerEarMat);
+        rightInner.position.set(0.58, 1.12, 0.28);
+        rightInner.scale.set(0.75, 0.65, 0.55);
+        pandaGroup.add(rightInner);
+        
+        // Eye Patches (Dramatic)
+        const patchGeo = new THREE.SphereGeometry(0.38, 96, 96);
+        const leftPatch = new THREE.Mesh(patchGeo, blackFur);
+        leftPatch.position.set(-0.52, 0.85, 0.78);
+        leftPatch.scale.set(1.15, 0.95, 0.65);
         leftPatch.castShadow = true;
         pandaGroup.add(leftPatch);
         
-        // Right Eye Patch
-        const rightPatch = new THREE.Mesh(patchGeo, blackFurMat);
-        rightPatch.position.set(0.48, 0.8, 0.75);
-        rightPatch.scale.set(1.1, 0.9, 0.6);
+        const rightPatch = new THREE.Mesh(patchGeo, blackFur);
+        rightPatch.position.set(0.52, 0.85, 0.78);
+        rightPatch.scale.set(1.15, 0.95, 0.65);
         rightPatch.castShadow = true;
         pandaGroup.add(rightPatch);
         
-        // Eyes (realistic with depth)
-        const eyeWhiteGeo = new THREE.SphereGeometry(0.2, 48, 48);
-        const eyeWhiteMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.1, metalness: 0.9 });
-        const leftEyeWhite = new THREE.Mesh(eyeWhiteGeo, eyeWhiteMat);
-        leftEyeWhite.position.set(-0.48, 0.82, 1.05);
-        pandaGroup.add(leftEyeWhite);
+        // Eyes with Realistic Reflection
+        const eyeWhiteGeo = new THREE.SphereGeometry(0.22, 96, 96);
+        const eyeWhiteMat = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, roughness: 0.08, metalness: 0.95, emissive: 0x4488FF, emissiveIntensity: 0.15 });
+        const leftEye = new THREE.Mesh(eyeWhiteGeo, eyeWhiteMat);
+        leftEye.position.set(-0.52, 0.85, 1.08);
+        pandaGroup.add(leftEye);
         
-        const rightEyeWhite = new THREE.Mesh(eyeWhiteGeo, eyeWhiteMat);
-        rightEyeWhite.position.set(0.48, 0.82, 1.05);
-        pandaGroup.add(rightEyeWhite);
+        const rightEye = new THREE.Mesh(eyeWhiteGeo, eyeWhiteMat);
+        rightEye.position.set(0.52, 0.85, 1.08);
+        pandaGroup.add(rightEye);
         
-        // Pupils (dark with highlight)
-        const pupilGeo = new THREE.SphereGeometry(0.12, 48, 48);
-        const pupilMat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 0.2, emissive: 0x111111 });
+        // Pupils with Depth
+        const pupilGeo = new THREE.SphereGeometry(0.14, 64, 64);
+        const pupilMat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 0.1, metalness: 0.2, emissive: 0x111111 });
         const leftPupil = new THREE.Mesh(pupilGeo, pupilMat);
-        leftPupil.position.set(-0.48, 0.79, 1.18);
+        leftPupil.position.set(-0.52, 0.82, 1.22);
         pandaGroup.add(leftPupil);
         
         const rightPupil = new THREE.Mesh(pupilGeo, pupilMat);
-        rightPupil.position.set(0.48, 0.79, 1.18);
+        rightPupil.position.set(0.52, 0.82, 1.22);
         pandaGroup.add(rightPupil);
         
-        // Eye reflections (realistic shine)
-        const highlightGeo = new THREE.SphereGeometry(0.045, 32, 32);
-        const highlightMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0x88aaff, emissiveIntensity: 0.4 });
+        // Eye Highlights (Anime-Style)
+        const highlightGeo = new THREE.SphereGeometry(0.055, 48, 48);
+        const highlightMat = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, emissive: 0x88AAFF, emissiveIntensity: 0.5 });
         const leftHighlight = new THREE.Mesh(highlightGeo, highlightMat);
-        leftHighlight.position.set(-0.53, 0.87, 1.22);
+        leftHighlight.position.set(-0.58, 0.92, 1.27);
         pandaGroup.add(leftHighlight);
         
         const rightHighlight = new THREE.Mesh(highlightGeo, highlightMat);
-        rightHighlight.position.set(0.43, 0.87, 1.22);
+        rightHighlight.position.set(0.46, 0.92, 1.27);
         pandaGroup.add(rightHighlight);
         
-        // Nose (black, slightly wet look)
-        const noseGeo = new THREE.SphereGeometry(0.13, 48, 48);
-        const nose = new THREE.Mesh(noseGeo, noseMat);
-        nose.position.set(0, 0.62, 1.15);
+        // Nose (Wet Look)
+        const noseGeo = new THREE.SphereGeometry(0.15, 64, 64);
+        const nose = new THREE.Mesh(noseGeo, noseMaterial);
+        nose.position.set(0, 0.62, 1.18);
         nose.castShadow = true;
         pandaGroup.add(nose);
         
-        // Nose tip highlight
-        const noseTipGeo = new THREE.SphereGeometry(0.05, 32, 32);
-        const noseTipMat = new THREE.MeshStandardMaterial({ color: 0x331a0a, emissive: 0x442200 });
-        const noseTip = new THREE.Mesh(noseTipGeo, noseTipMat);
-        noseTip.position.set(0, 0.6, 1.25);
+        // Nose Highlight
+        const noseTip = new THREE.Mesh(new THREE.SphereGeometry(0.06, 32, 32), new THREE.MeshStandardMaterial({ color: 0x442211, emissive: 0x331100 }));
+        noseTip.position.set(0, 0.6, 1.29);
         pandaGroup.add(noseTip);
         
-        // Mouth (subtle curve)
-        const mouthGeo = new THREE.TorusGeometry(0.12, 0.025, 32, 64, Math.PI);
+        // Mouth (Subtle Smile)
+        const mouthCurve = new THREE.CubicBezierCurve3(
+            new THREE.Vector3(-0.18, 0.52, 1.22),
+            new THREE.Vector3(-0.1, 0.48, 1.27),
+            new THREE.Vector3(0.1, 0.48, 1.27),
+            new THREE.Vector3(0.18, 0.52, 1.22)
+        );
+        const mouthTube = new THREE.TubeGeometry(mouthCurve, 32, 0.022, 8, false);
         const mouthMat = new THREE.MeshStandardMaterial({ color: 0x553322 });
-        const mouth = new THREE.Mesh(mouthGeo, mouthMat);
-        mouth.rotation.x = 0.2;
-        mouth.rotation.z = 0;
-        mouth.position.set(0, 0.52, 1.18);
+        const mouth = new THREE.Mesh(mouthTube, mouthMat);
         pandaGroup.add(mouth);
         
-        // Arms (realistic cylinders)
-        const armGeo = new THREE.CylinderGeometry(0.22, 0.28, 0.75, 24);
-        const leftArm = new THREE.Mesh(armGeo, blackFurMat);
-        leftArm.position.set(-0.85, 0.15, 0.45);
-        leftArm.rotation.z = 0.6;
-        leftArm.rotation.x = 0.2;
+        // Cheek Fluff
+        const cheekGeo = new THREE.SphereGeometry(0.14, 48, 48);
+        const cheekMat = new THREE.MeshStandardMaterial({ color: 0xE8D0B0, roughness: 0.4 });
+        const leftCheek = new THREE.Mesh(cheekGeo, cheekMat);
+        leftCheek.position.set(-0.7, 0.55, 0.92);
+        pandaGroup.add(leftCheek);
+        
+        const rightCheek = new THREE.Mesh(cheekGeo, cheekMat);
+        rightCheek.position.set(0.7, 0.55, 0.92);
+        pandaGroup.add(rightCheek);
+        
+        // Arms with Rotation Capability
+        const armGeo = new THREE.CylinderGeometry(0.24, 0.3, 0.8, 32);
+        const leftArm = new THREE.Mesh(armGeo, blackFur);
+        leftArm.position.set(-0.88, 0.12, 0.48);
+        leftArm.rotation.z = 0.55;
+        leftArm.rotation.x = 0.25;
         leftArm.castShadow = true;
         pandaGroup.add(leftArm);
         
-        const rightArm = new THREE.Mesh(armGeo, blackFurMat);
-        rightArm.position.set(0.85, 0.15, 0.45);
-        rightArm.rotation.z = -0.6;
-        rightArm.rotation.x = 0.2;
+        const rightArm = new THREE.Mesh(armGeo, blackFur);
+        rightArm.position.set(0.88, 0.12, 0.48);
+        rightArm.rotation.z = -0.55;
+        rightArm.rotation.x = 0.25;
         rightArm.castShadow = true;
         pandaGroup.add(rightArm);
         
         // Legs
-        const legGeo = new THREE.CylinderGeometry(0.26, 0.32, 0.65, 24);
-        const leftLeg = new THREE.Mesh(legGeo, blackFurMat);
-        leftLeg.position.set(-0.48, -0.65, 0.25);
+        const legGeo = new THREE.CylinderGeometry(0.28, 0.34, 0.7, 32);
+        const leftLeg = new THREE.Mesh(legGeo, blackFur);
+        leftLeg.position.set(-0.52, -0.68, 0.28);
         leftLeg.castShadow = true;
         pandaGroup.add(leftLeg);
         
-        const rightLeg = new THREE.Mesh(legGeo, blackFurMat);
-        rightLeg.position.set(0.48, -0.65, 0.25);
+        const rightLeg = new THREE.Mesh(legGeo, blackFur);
+        rightLeg.position.set(0.52, -0.68, 0.28);
         rightLeg.castShadow = true;
         pandaGroup.add(rightLeg);
         
-        // Subtle fur texture effect (small particles around panda)
-        const furParticleCount = 800;
-        const furParticleGeo = new THREE.BufferGeometry();
-        const furPositions = new Float32Array(furParticleCount * 3);
-        for (let i = 0; i < furParticleCount; i++) {
-            furPositions[i*3] = (Math.random() - 0.5) * 2.2;
-            furPositions[i*3+1] = Math.random() * 1.8 - 0.3;
-            furPositions[i*3+2] = (Math.random() - 0.5) * 1.8 + 0.3;
+        // Fur Particle Effect (Realism)
+        const furCount = 1500;
+        const furGeo = new THREE.BufferGeometry();
+        const furPos = new Float32Array(furCount * 3);
+        for (let i = 0; i < furCount; i++) {
+            furPos[i*3] = (Math.random() - 0.5) * 2.4;
+            furPos[i*3+1] = Math.random() * 1.8 - 0.2;
+            furPos[i*3+2] = (Math.random() - 0.5) * 2 + 0.3;
         }
-        furParticleGeo.setAttribute('position', new THREE.BufferAttribute(furPositions, 3));
-        const furParticleMat = new THREE.PointsMaterial({ color: 0x2a2a2a, size: 0.012, transparent: true, opacity: 0.3 });
-        const furParticles = new THREE.Points(furParticleGeo, furParticleMat);
+        furGeo.setAttribute('position', new THREE.BufferAttribute(furPos, 3));
+        const furMat = new THREE.PointsMaterial({ color: 0x2A2A2A, size: 0.01, transparent: true, opacity: 0.25 });
+        const furParticles = new THREE.Points(furGeo, furMat);
         pandaGroup.add(furParticles);
+        
+        // Magical Aura
+        const auraGeo = new THREE.SphereGeometry(1.35, 48, 48);
+        const auraMat = new THREE.MeshStandardMaterial({ color: 0x66FCF1, emissive: 0x66FCF1, emissiveIntensity: 0.12, transparent: true, opacity: 0.08, side: THREE.BackSide });
+        const aura = new THREE.Mesh(auraGeo, auraMat);
+        pandaGroup.add(aura);
         
         scene.add(pandaGroup);
         
-        // ========== MOUSE PARALLAX EFFECT (Matches your index.html style) ==========
-        let mouseX = 0, mouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-            mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-        });
-        
-        // ========== WALKING ANIMATION ==========
-        let walkProgress = 0;
+        // ========== CINEMATIC ANIMATION ==========
+        let time = 0;
         let isWalking = true;
+        let walkProgress = 0;
         let armSwing = 0;
+        let blinked = false;
         
-        pandaGroup.position.x = -5;
-        pandaGroup.position.y = 0;
+        pandaGroup.position.x = -5.2;
+        pandaGroup.position.z = 0;
         
-        // ========== CELEBRATION EFFECT ==========
-        function createCelebration() {
-            const celebrationCount = 80;
-            for (let i = 0; i < celebrationCount; i++) {
-                const sparkle = new THREE.Mesh(
-                    new THREE.SphereGeometry(0.04, 8, 8),
-                    new THREE.MeshStandardMaterial({ color: i % 2 === 0 ? 0x66FCF1 : 0xC3073F, emissive: i % 2 === 0 ? 0x226666 : 0x662222, emissiveIntensity: 0.6 })
+        // Celebration Effect
+        function createCinematicCelebration() {
+            const particleCount = 150;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.035, 8, 8),
+                    new THREE.MeshStandardMaterial({ color: i % 3 === 0 ? 0x66FCF1 : (i % 3 === 1 ? 0xC3073F : 0xFFD700), emissive: 0x442200, emissiveIntensity: 0.8 })
                 );
-                sparkle.position.set(
-                    (Math.random() - 0.5) * 2.5,
+                particle.position.set(
+                    (Math.random() - 0.5) * 2.8,
                     Math.random() * 2.5,
-                    (Math.random() - 0.5) * 2
+                    (Math.random() - 0.5) * 2.2
                 );
-                pandaGroup.add(sparkle);
+                pandaGroup.add(particle);
                 
-                let yPos = sparkle.position.y;
-                let life = 1;
-                const animateSparkle = setInterval(() => {
-                    yPos += 0.04;
-                    sparkle.position.y = yPos;
-                    sparkle.scale.multiplyScalar(0.96);
-                    life -= 0.02;
-                    if (yPos > 2.5 || sparkle.scale.x < 0.1) {
-                        clearInterval(animateSparkle);
-                        pandaGroup.remove(sparkle);
+                let yPos = particle.position.y;
+                let scale = 1;
+                const animate = setInterval(() => {
+                    yPos += 0.045;
+                    scale *= 0.97;
+                    particle.position.y = yPos;
+                    particle.scale.set(scale, scale, scale);
+                    if (yPos > 3 || scale < 0.1) {
+                        clearInterval(animate);
+                        pandaGroup.remove(particle);
                     }
                 }, 30);
             }
+            
+            // Camera Shake Effect
+            const originalCamPos = camera.position.clone();
+            let shakeTime = 0;
+            const shakeInterval = setInterval(() => {
+                camera.position.x = originalCamPos.x + (Math.random() - 0.5) * 0.08;
+                camera.position.y = originalCamPos.y + (Math.random() - 0.5) * 0.05;
+                shakeTime++;
+                if (shakeTime > 15) {
+                    clearInterval(shakeInterval);
+                    camera.position.x = originalCamPos.x;
+                    camera.position.y = originalCamPos.y;
+                }
+            }, 30);
         }
         
-        // ========== ANIMATION LOOP ==========
-        let time = 0;
-        let blinked = false;
-        
-        function animate() {
-            requestAnimationFrame(animate);
+        // Animation Loop
+        function cinematicAnimate() {
+            requestAnimationFrame(cinematicAnimate);
             time += 0.016;
-            armSwing += 0.15;
+            armSwing += 0.18;
             
-            // Panda walking animation
+            // Walking Animation
             if (isWalking && pandaGroup.position.x < 0) {
-                pandaGroup.position.x += 0.025;
-                pandaGroup.position.y = Math.sin(time * 8) * 0.03;
+                pandaGroup.position.x += 0.028;
+                pandaGroup.position.y = Math.sin(time * 9) * 0.04;
                 
-                // Arm swinging
-                if (leftArm && rightArm) {
-                    leftArm.rotation.x = 0.2 + Math.sin(armSwing) * 0.4;
-                    rightArm.rotation.x = 0.2 - Math.sin(armSwing) * 0.4;
-                }
+                leftArm.rotation.x = 0.25 + Math.sin(armSwing) * 0.55;
+                rightArm.rotation.x = 0.25 - Math.sin(armSwing) * 0.55;
+                head.rotation.z = Math.sin(armSwing * 2) * 0.07;
                 
-                // Slight head bob
-                head.rotation.z = Math.sin(armSwing * 2) * 0.05;
+                // Body Sway
+                pandaGroup.rotation.z = Math.sin(armSwing * 2) * 0.03;
             } else if (isWalking && pandaGroup.position.x >= 0) {
                 isWalking = false;
                 pandaGroup.position.x = 0;
-                createCelebration();
+                createCinematicCelebration();
+                
+                // Reset arm position
+                leftArm.rotation.x = 0.25;
+                rightArm.rotation.x = 0.25;
             }
             
-            // Idle animation
+            // Idle Cinematic Movements
             if (!isWalking) {
-                pandaGroup.rotation.z = Math.sin(time * 0.8) * 0.02;
-                pandaGroup.position.y = Math.sin(time * 1.2) * 0.015;
-                head.rotation.z = Math.sin(time * 0.5) * 0.03;
+                pandaGroup.rotation.z = Math.sin(time * 0.6) * 0.025;
+                pandaGroup.position.y = Math.sin(time * 0.9) * 0.012;
+                head.rotation.z = Math.sin(time * 0.7) * 0.04;
+                head.rotation.x = Math.sin(time * 0.5) * 0.02;
                 
-                // Subtle ear movement
-                leftEar.rotation.z = Math.sin(time * 1.5) * 0.03;
-                rightEar.rotation.z = -Math.sin(time * 1.5) * 0.03;
+                // Ear Twitch
+                leftEarOuter.rotation.z = Math.sin(time * 2.2) * 0.04;
+                rightEarOuter.rotation.z = -Math.sin(time * 2.2) * 0.04;
                 
-                // Blink effect every 4 seconds
-                if (!blinked && Math.floor(time * 10) % 200 === 0) {
+                // Blink
+                if (!blinked && Math.floor(time * 8) % 180 === 0) {
                     blinked = true;
-                    leftPupil.scale.y = 0.05;
-                    rightPupil.scale.y = 0.05;
+                    leftPupil.scale.y = 0.08;
+                    rightPupil.scale.y = 0.08;
                     setTimeout(() => {
                         leftPupil.scale.y = 1;
                         rightPupil.scale.y = 1;
                         blinked = false;
                     }, 120);
                 }
+                
+                // Eye Movement (Gentle)
+                const eyeShiftX = Math.sin(time * 0.4) * 0.015;
+                const eyeShiftY = Math.sin(time * 0.5) * 0.008;
+                leftPupil.position.x = -0.52 + eyeShiftX;
+                rightPupil.position.x = 0.52 + eyeShiftX;
+                leftPupil.position.y = 0.82 + eyeShiftY;
+                rightPupil.position.y = 0.82 + eyeShiftY;
             }
             
-            // Rotate fur particles
-            furParticles.rotation.y += 0.01;
-            furParticles.rotation.x = Math.sin(time * 0.3) * 0.1;
+            // Particle Animations
+            particles.rotation.y += 0.0008;
+            particles.rotation.x = Math.sin(time * 0.1) * 0.05;
+            dustParticles.rotation.y -= 0.0005;
+            dustParticles.rotation.x += 0.0003;
+            furParticles.rotation.y += 0.008;
             
-            // Rotate background particles
-            particles.rotation.y += 0.001;
-            particles.rotation.x += 0.0005;
+            // Aura Pulse
+            const pulse = 1 + Math.sin(time * 3) * 0.03;
+            aura.scale.set(pulse, pulse, pulse);
             
-            // Mouse parallax effect (like your index.html)
-            camera.position.x += (mouseX * 0.8 - camera.position.x) * 0.05;
-            camera.position.y += (-mouseY * 0.5 + 2 - camera.position.y) * 0.05;
+            // Volumetric Light Pulse
+            volumetricLight.intensity = 0.3 + Math.sin(time * 2.5) * 0.1;
+            rimLight.intensity = 0.65 + Math.sin(time * 1.8) * 0.1;
+            
+            // Camera Movement (Subtle Cinematic Drift)
+            if (!isWalking) {
+                camera.position.x += (mouseX * 0.6 - camera.position.x) * 0.04;
+                camera.position.y += (-mouseY * 0.4 + 2.2 - camera.position.y) * 0.04;
+            }
             camera.lookAt(0, 1.2, 0);
             
             renderer.render(scene, camera);
         }
         
-        animate();
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+        });
         
-        // ========== PANDA CLICK HANDLER ==========
+        cinematicAnimate();
+        
+        // ========== INTERACTION WITH RAYCASTER ==========
         const raycaster = new THREE.Raycaster();
-        const clickMouse = new THREE.Vector2();
+        const clickPos = new THREE.Vector2();
         
         function onPandaClick(event) {
             if (isWalking) return;
             
-            clickMouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
-            clickMouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+            clickPos.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
+            clickPos.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
             
-            raycaster.setFromCamera(clickMouse, camera);
+            raycaster.setFromCamera(clickPos, camera);
             const intersects = raycaster.intersectObject(pandaGroup, true);
             
             if (intersects.length > 0) {
-                // Create ripple effect
+                // Cinematic Ripple Effect
                 const ripple = document.createElement('div');
                 ripple.style.position = 'fixed';
                 ripple.style.left = event.clientX + 'px';
                 ripple.style.top = event.clientY + 'px';
-                ripple.style.width = '20px';
-                ripple.style.height = '20px';
-                ripple.style.background = 'radial-gradient(circle, #66FCF1, transparent)';
+                ripple.style.width = '30px';
+                ripple.style.height = '30px';
+                ripple.style.background = 'radial-gradient(circle, #66FCF1, #C3073F, transparent)';
                 ripple.style.borderRadius = '50%';
                 ripple.style.pointerEvents = 'none';
                 ripple.style.zIndex = '2000';
-                ripple.style.animation = 'rippleExpand 0.6s ease-out forwards';
+                ripple.style.animation = 'rippleExpand 0.8s ease-out forwards';
                 document.body.appendChild(ripple);
-                setTimeout(() => ripple.remove(), 600);
+                setTimeout(() => ripple.remove(), 800);
                 
-                // Show modal
-                showReturnModal();
+                showCinematicModal();
             }
         }
         
-        function showReturnModal() {
+        function showCinematicModal() {
             const modal = document.createElement('div');
             modal.style.position = 'fixed';
             modal.style.top = '0';
             modal.style.left = '0';
             modal.style.width = '100%';
             modal.style.height = '100%';
-            modal.style.background = 'rgba(0,0,0,0.85)';
-            modal.style.backdropFilter = 'blur(20px)';
+            modal.style.background = 'rgba(0,0,0,0.9)';
+            modal.style.backdropFilter = 'blur(25px)';
             modal.style.zIndex = '3000';
             modal.style.display = 'flex';
             modal.style.alignItems = 'center';
             modal.style.justifyContent = 'center';
-            modal.style.animation = 'fadeIn 0.3s ease';
+            modal.style.animation = 'fadeIn 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
             
             modal.innerHTML = `
-                <div style="background: linear-gradient(135deg, #0F1A2F, #1A2A3F); border-radius: 48px; padding: 45px; max-width: 500px; width: 90%; border: 2px solid #66FCF1; box-shadow: 0 40px 80px rgba(0,0,0,0.5); text-align: center; animation: slideUpModal 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);">
-                    <i class="fas fa-panda" style="font-size: 70px; color: #66FCF1; filter: drop-shadow(0 0 20px rgba(102,252,241,0.5)); margin-bottom: 20px; display: block;"></i>
-                    <h2 style="color: #66FCF1; margin-bottom: 15px; font-size: 1.8rem;">Welcome Back!</h2>
-                    <p style="color: #CCDEFF; margin-bottom: 25px; line-height: 1.6;">Ready to complete your application journey? Our team is excited to review your profile.</p>
-                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <button id="modalRedirectBtn" style="background: linear-gradient(135deg, #66FCF1, #2C5F8A); border: none; padding: 14px 32px; border-radius: 50px; color: #0A1428; font-weight: bold; cursor: pointer; font-size: 1rem;">
+                <div style="background: linear-gradient(135deg, rgba(10,25,47,0.95), rgba(20,40,60,0.95)); border-radius: 56px; padding: 50px; max-width: 550px; width: 90%; border: 2px solid #66FCF1; box-shadow: 0 0 60px rgba(102,252,241,0.4), 0 30px 60px rgba(0,0,0,0.5); text-align: center; animation: slideUpModal 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);">
+                    <div style="position: relative;">
+                        <i class="fas fa-panda" style="font-size: 85px; color: #66FCF1; filter: drop-shadow(0 0 25px rgba(102,252,241,0.8)); animation: iconFloat 2s ease-in-out infinite; display: inline-block;"></i>
+                        <div style="position: absolute; top: -10px; right: -10px; width: 40px; height: 40px; background: linear-gradient(135deg, #C3073F, #FF6B6B); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulseHeart 1s infinite;">
+                            <i class="fas fa-heart" style="font-size: 20px; color: white;"></i>
+                        </div>
+                    </div>
+                    <h2 style="color: #66FCF1; margin: 25px 0 15px; font-size: 2rem; text-shadow: 0 0 15px rgba(102,252,241,0.5);">Welcome Back, Hero!</h2>
+                    <p style="color: #CCDEFF; margin-bottom: 30px; line-height: 1.7; font-size: 1rem;">The sacred panda has blessed your journey. Continue your application to unlock your full potential at SARR Institute of Technology.</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <button id="modalRedirectBtn" style="background: linear-gradient(135deg, #66FCF1, #2C5F8A); border: none; padding: 16px 36px; border-radius: 60px; color: #0A1428; font-weight: bold; cursor: pointer; font-size: 1rem; transition: all 0.3s;">
                             <i class="fas fa-paper-plane"></i> Continue Application
                         </button>
-                        <button id="modalCloseBtn" style="background: transparent; border: 2px solid #66FCF1; padding: 14px 28px; border-radius: 50px; color: #66FCF1; cursor: pointer;">
-                            <i class="fas fa-times"></i> Stay Here
+                        <button id="modalCloseBtn" style="background: transparent; border: 2px solid #66FCF1; padding: 14px 32px; border-radius: 60px; color: #66FCF1; cursor: pointer; font-size: 1rem; transition: all 0.3s;">
+                            <i class="fas fa-times"></i> Stay in Magic
                         </button>
                     </div>
                 </div>
@@ -758,22 +955,19 @@
             
             document.body.appendChild(modal);
             
-            document.getElementById('modalRedirectBtn').onclick = () => {
-                window.location.href = 'index.html';
-            };
-            
+            document.getElementById('modalRedirectBtn').onclick = () => window.location.href = 'index.html';
             document.getElementById('modalCloseBtn').onclick = () => {
                 modal.style.animation = 'fadeOut 0.2s ease';
                 setTimeout(() => modal.remove(), 200);
             };
         }
         
-        // Add CSS animations
-        const style = document.createElement('style');
-        style.textContent = `
+        // Animation Keyframes
+        const animStyle = document.createElement('style');
+        animStyle.textContent = `
             @keyframes rippleExpand {
-                0% { transform: scale(0); opacity: 0.8; }
-                100% { transform: scale(50); opacity: 0; }
+                0% { transform: scale(0); opacity: 0.9; }
+                100% { transform: scale(40); opacity: 0; }
             }
             @keyframes fadeIn {
                 from { opacity: 0; }
@@ -783,22 +977,29 @@
                 to { opacity: 0; }
             }
             @keyframes slideUpModal {
-                from { transform: translateY(50px); opacity: 0; }
+                from { transform: translateY(60px); opacity: 0; }
                 to { transform: translateY(0); opacity: 1; }
             }
+            @keyframes iconFloat {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-8px); }
+            }
+            @keyframes pulseHeart {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.15); box-shadow: 0 0 15px #C3073F; }
+            }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(animStyle);
         
         window.addEventListener('click', onPandaClick);
         
-        // ========== RESIZE HANDLER (Matches your index.html style) ==========
+        // ========== UI COUNTDOWN & DATA ==========
         window.addEventListener('resize', () => {
             camera.aspect = container.clientWidth / container.clientHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(container.clientWidth, container.clientHeight);
         });
         
-        // ========== COUNTDOWN TIMER ==========
         function getStoredTargetTime() {
             let targetTime = localStorage.getItem('sarr_reply_target_time');
             if (!targetTime) {
@@ -849,7 +1050,6 @@
             if (replyTimeEl) replyTimeEl.textContent = `${totalHours} Hours ${minutesLeft} Min`;
         }
         
-        // ========== GET URL PARAMETERS ==========
         function getUrlParams() {
             const params = new URLSearchParams(window.location.search);
             return {
@@ -868,7 +1068,6 @@
             }
         }
         
-        // ========== INITIALIZE UI ==========
         document.addEventListener('DOMContentLoaded', () => {
             const params = getUrlParams();
             let studentName = formatName(params.name);
@@ -905,7 +1104,7 @@
             };
         });
         
-        console.log('🐼 Realistic 3D Panda loaded! Click on panda to return to form.');
+        console.log('🎬 Cinematic 3D Experience Loaded | Marvel-Level VFX Active');
     </script>
 </body>
 </html>
