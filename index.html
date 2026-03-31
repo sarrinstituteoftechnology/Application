@@ -287,15 +287,15 @@
                 <div class="application-id" id="applicationId"></div>
                 
                 <div class="reply-section">
-                    <div class="reply-label"><i class="fas fa-clock"></i> ESTIMATED RESPONSE TIME</div>
-                    <div class="reply-time" id="replyTime">3-8 Hours</div>
+                    <div class="reply-label"><i class="fas fa-clock"></i> RESPONSE TIME REMAINING</div>
+                    <div class="reply-time" id="replyTime">24 Hours</div>
                     <div class="reply-description">
-                        <i class="fas fa-envelope"></i> Our admissions team will contact you shortly
+                        <i class="fas fa-envelope"></i> Our admissions team will contact you within 24 hours
                     </div>
                 </div>
                 
                 <div class="countdown" id="countdown">
-                    <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hours</div></div>
+                    <div class="countdown-item"><div class="countdown-number" id="hours">24</div><div class="countdown-label">Hours</div></div>
                     <div class="countdown-item"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Minutes</div></div>
                     <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Seconds</div></div>
                 </div>
@@ -354,7 +354,6 @@
         controls.maxPolarAngle = Math.PI / 2.2;
         
         // ========== LIGHTING ==========
-        // Main Key Light
         const keyLight = new THREE.DirectionalLight(0xFFFFFF, 0.9);
         keyLight.position.set(3, 4, 3);
         keyLight.castShadow = true;
@@ -363,22 +362,18 @@
         keyLight.shadow.mapSize.height = 1024;
         scene.add(keyLight);
         
-        // Fill Light (Green accent)
         const fillLight = new THREE.PointLight(0x4CAF50, 0.4);
         fillLight.position.set(-2, 2.5, 3);
         scene.add(fillLight);
         
-        // Rim Light
         const rimLight = new THREE.PointLight(0x4CAF50, 0.5);
         rimLight.position.set(1.5, 2.8, -3);
         scene.add(rimLight);
         
-        // Back Light
         const backLight = new THREE.PointLight(0x2E7D32, 0.4);
         backLight.position.set(0, 2, -4.5);
         scene.add(backLight);
         
-        // Ground Ambient
         const groundFill = new THREE.PointLight(0x4CAF50, 0.25);
         groundFill.position.set(0, -1, 0);
         scene.add(groundFill);
@@ -402,7 +397,6 @@
         const particles = new THREE.Points(particleGeo, particleMat);
         scene.add(particles);
         
-        // Floating Dust
         const dustCount = 1500;
         const dustGeo = new THREE.BufferGeometry();
         const dustPositions = new Float32Array(dustCount * 3);
@@ -434,42 +428,32 @@
         glowCircle.position.y = -1.38;
         scene.add(glowCircle);
         
-        // ========== FEMALE ANDROID MODEL (Cyber-Tech Style) ==========
+        // ========== FEMALE ANDROID MODEL ==========
         const androidGroup = new THREE.Group();
         
-        // Materials
         const metalMat = new THREE.MeshStandardMaterial({ color: 0x3A5A6E, metalness: 0.75, roughness: 0.25 });
         const darkMetalMat = new THREE.MeshStandardMaterial({ color: 0x2A4A5A, metalness: 0.7, roughness: 0.3 });
         const glowMat = new THREE.MeshStandardMaterial({ color: 0x4CAF50, emissive: 0x4CAF50, emissiveIntensity: 0.35, metalness: 0.8 });
         const skinMat = new THREE.MeshStandardMaterial({ color: 0x5D7A6E, metalness: 0.3, roughness: 0.4 });
-        const accentMat = new THREE.MeshStandardMaterial({ color: 0x4CAF50, emissive: 0x4CAF50, emissiveIntensity: 0.2 });
         
-        // Body (Torso)
         const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.5, 1.1, 32), metalMat);
         torso.position.y = -0.2;
         torso.castShadow = true;
-        torso.receiveShadow = true;
         androidGroup.add(torso);
         
-        // Chest plate (Glowing accent)
         const chestPlate = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.45, 0.15), glowMat);
         chestPlate.position.set(0, 0.15, 0.55);
-        chestPlate.castShadow = true;
         androidGroup.add(chestPlate);
         
-        // Neck
         const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.25, 0.25, 24), darkMetalMat);
         neck.position.set(0, 0.65, 0.15);
         androidGroup.add(neck);
         
-        // Head
         const head = new THREE.Mesh(new THREE.SphereGeometry(0.48, 64, 64), skinMat);
         head.position.set(0, 0.98, 0.1);
-        head.castShadow = true;
         androidGroup.add(head);
         
-        // Face details - Eyes with green glow
-        const eyeMat = new THREE.MeshStandardMaterial({ color: 0x4CAF50, emissive: 0x4CAF50, emissiveIntensity: 0.6, metalness: 0.9 });
+        const eyeMat = new THREE.MeshStandardMaterial({ color: 0x4CAF50, emissive: 0x4CAF50, emissiveIntensity: 0.6 });
         const leftEye = new THREE.Mesh(new THREE.SphereGeometry(0.1, 32, 32), eyeMat);
         leftEye.position.set(-0.18, 1.05, 0.52);
         androidGroup.add(leftEye);
@@ -478,7 +462,6 @@
         rightEye.position.set(0.18, 1.05, 0.52);
         androidGroup.add(rightEye);
         
-        // Eye highlights
         const highlightMat = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, emissive: 0x88AAFF, emissiveIntensity: 0.2 });
         const leftHighlight = new THREE.Mesh(new THREE.SphereGeometry(0.04, 24, 24), highlightMat);
         leftHighlight.position.set(-0.22, 1.08, 0.58);
@@ -488,21 +471,18 @@
         rightHighlight.position.set(0.14, 1.08, 0.58);
         androidGroup.add(rightHighlight);
         
-        // Mouth (subtle line)
         const mouthMat = new THREE.MeshStandardMaterial({ color: 0x4CAF50 });
         const mouth = new THREE.Mesh(new THREE.TorusGeometry(0.12, 0.03, 16, 32), mouthMat);
         mouth.rotation.x = 0.2;
         mouth.position.set(0, 0.88, 0.58);
         androidGroup.add(mouth);
         
-        // Hair - Futuristic style
         const hairMat = new THREE.MeshStandardMaterial({ color: 0x1A3A4A, metalness: 0.4, roughness: 0.5 });
         const hairBase = new THREE.Mesh(new THREE.SphereGeometry(0.52, 48, 48), hairMat);
         hairBase.position.set(0, 1.12, -0.05);
         hairBase.scale.set(0.95, 0.6, 0.8);
         androidGroup.add(hairBase);
         
-        // Side hair pieces
         const leftHair = new THREE.Mesh(new THREE.SphereGeometry(0.2, 32, 32), hairMat);
         leftHair.position.set(-0.42, 1.05, 0.05);
         leftHair.scale.set(0.7, 0.5, 0.6);
@@ -513,8 +493,7 @@
         rightHair.scale.set(0.7, 0.5, 0.6);
         androidGroup.add(rightHair);
         
-        // Shoulders
-        const shoulderMat = new THREE.MeshStandardMaterial({ color: 0x4A6A7E, metalness: 0.7, roughness: 0.25 });
+        const shoulderMat = new THREE.MeshStandardMaterial({ color: 0x4A6A7E, metalness: 0.7 });
         const leftShoulder = new THREE.Mesh(new THREE.SphereGeometry(0.22, 32, 32), shoulderMat);
         leftShoulder.position.set(-0.65, 0.52, 0.15);
         androidGroup.add(leftShoulder);
@@ -523,23 +502,19 @@
         rightShoulder.position.set(0.65, 0.52, 0.15);
         androidGroup.add(rightShoulder);
         
-        // Arms
-        const armMat = new THREE.MeshStandardMaterial({ color: 0x3A5A6E, metalness: 0.7, roughness: 0.3 });
+        const armMat = new THREE.MeshStandardMaterial({ color: 0x3A5A6E, metalness: 0.7 });
         const leftArm = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.14, 0.85, 24), armMat);
         leftArm.position.set(-0.78, 0.15, 0.2);
         leftArm.rotation.z = 0.4;
         leftArm.rotation.x = 0.3;
-        leftArm.castShadow = true;
         androidGroup.add(leftArm);
         
         const rightArm = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.14, 0.85, 24), armMat);
         rightArm.position.set(0.78, 0.15, 0.2);
         rightArm.rotation.z = -0.4;
         rightArm.rotation.x = 0.3;
-        rightArm.castShadow = true;
         androidGroup.add(rightArm);
         
-        // Forearms with glowing rings
         const leftForearm = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.1, 0.55, 24), armMat);
         leftForearm.position.set(-1.02, -0.2, 0.35);
         leftForearm.rotation.z = 0.2;
@@ -550,7 +525,6 @@
         rightForearm.rotation.z = -0.2;
         androidGroup.add(rightForearm);
         
-        // Glowing rings on forearms
         const ringMat = new THREE.MeshStandardMaterial({ color: 0x4CAF50, emissive: 0x4CAF50, emissiveIntensity: 0.4 });
         const leftRing = new THREE.Mesh(new THREE.TorusGeometry(0.14, 0.04, 16, 32), ringMat);
         leftRing.position.set(-1.05, -0.45, 0.4);
@@ -562,7 +536,6 @@
         rightRing.rotation.x = Math.PI / 2;
         androidGroup.add(rightRing);
         
-        // Hands
         const handMat = new THREE.MeshStandardMaterial({ color: 0x5D7A6E });
         const leftHand = new THREE.Mesh(new THREE.SphereGeometry(0.1, 24, 24), handMat);
         leftHand.position.set(-1.25, -0.48, 0.45);
@@ -572,20 +545,16 @@
         rightHand.position.set(1.25, -0.48, 0.45);
         androidGroup.add(rightHand);
         
-        // Legs
         const legMat = new THREE.MeshStandardMaterial({ color: 0x2A4A5A, metalness: 0.65 });
         const leftLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.18, 0.9, 24), legMat);
         leftLeg.position.set(-0.32, -0.85, 0.05);
-        leftLeg.castShadow = true;
         androidGroup.add(leftLeg);
         
         const rightLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.18, 0.9, 24), legMat);
         rightLeg.position.set(0.32, -0.85, 0.05);
-        rightLeg.castShadow = true;
         androidGroup.add(rightLeg);
         
-        // Feet
-        const footMat = new THREE.MeshStandardMaterial({ color: 0x1A3A4A, metalness: 0.5 });
+        const footMat = new THREE.MeshStandardMaterial({ color: 0x1A3A4A });
         const leftFoot = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.12, 0.45), footMat);
         leftFoot.position.set(-0.32, -1.28, 0.2);
         androidGroup.add(leftFoot);
@@ -594,13 +563,11 @@
         rightFoot.position.set(0.32, -1.28, 0.2);
         androidGroup.add(rightFoot);
         
-        // Energy core in chest (pulsing glow)
-        const coreMat = new THREE.MeshStandardMaterial({ color: 0x4CAF50, emissive: 0x4CAF50, emissiveIntensity: 0.5, metalness: 0.8 });
+        const coreMat = new THREE.MeshStandardMaterial({ color: 0x4CAF50, emissive: 0x4CAF50, emissiveIntensity: 0.5 });
         const energyCore = new THREE.Mesh(new THREE.SphereGeometry(0.18, 32, 32), coreMat);
         energyCore.position.set(0, 0.12, 0.68);
         androidGroup.add(energyCore);
         
-        // Floating particles around android
         const androidParticleCount = 400;
         const androidParticleGeo = new THREE.BufferGeometry();
         const androidPositions = new Float32Array(androidParticleCount * 3);
@@ -614,7 +581,6 @@
         const androidParticles = new THREE.Points(androidParticleGeo, androidParticleMat);
         androidGroup.add(androidParticles);
         
-        // Glowing aura
         const auraMatAndroid = new THREE.MeshStandardMaterial({ color: 0x4CAF50, emissive: 0x4CAF50, emissiveIntensity: 0.12, transparent: true, opacity: 0.12, side: THREE.BackSide });
         const auraSphere = new THREE.Mesh(new THREE.SphereGeometry(0.98, 32, 32), auraMatAndroid);
         auraSphere.position.set(0, 0.5, 0.2);
@@ -639,13 +605,8 @@
                     new THREE.SphereGeometry(0.025, 8, 8),
                     new THREE.MeshStandardMaterial({ color: i % 2 === 0 ? 0x4CAF50 : 0x2E7D32, emissive: 0x4CAF50, emissiveIntensity: 0.3 })
                 );
-                particle.position.set(
-                    (Math.random() - 0.5) * 2.5,
-                    Math.random() * 2.2,
-                    (Math.random() - 0.5) * 2
-                );
+                particle.position.set((Math.random() - 0.5) * 2.5, Math.random() * 2.2, (Math.random() - 0.5) * 2);
                 androidGroup.add(particle);
-                
                 let yPos = particle.position.y;
                 let scale = 1;
                 const animate = setInterval(() => {
@@ -667,14 +628,12 @@
             armSwing += 0.18;
             corePulse += 0.05;
             
-            // Pulsing energy core
             const pulseScale = 1 + Math.sin(corePulse * 3) * 0.1;
             energyCore.scale.set(pulseScale, pulseScale, pulseScale);
             
             if (isWalking && androidGroup.position.x < 0) {
                 androidGroup.position.x += 0.022;
                 androidGroup.position.y = -0.2 + Math.sin(time * 8) * 0.025;
-                
                 leftArm.rotation.x = 0.3 + Math.sin(armSwing) * 0.45;
                 rightArm.rotation.x = 0.3 - Math.sin(armSwing) * 0.45;
                 head.rotation.z = Math.sin(armSwing * 1.8) * 0.05;
@@ -692,18 +651,11 @@
                 androidGroup.position.y = -0.2 + Math.sin(time * 0.8) * 0.008;
                 head.rotation.z = Math.sin(time * 0.6) * 0.03;
                 head.rotation.x = Math.sin(time * 0.5) * 0.02;
-                
-                // Gentle eye blink effect
                 if (Math.floor(time * 8) % 180 === 0) {
                     leftEye.scale.y = 0.08;
                     rightEye.scale.y = 0.08;
-                    setTimeout(() => {
-                        leftEye.scale.y = 1;
-                        rightEye.scale.y = 1;
-                    }, 100);
+                    setTimeout(() => { leftEye.scale.y = 1; rightEye.scale.y = 1; }, 100);
                 }
-                
-                // Soft eye movement
                 const eyeShiftX = Math.sin(time * 0.4) * 0.012;
                 leftEye.position.x = -0.18 + eyeShiftX;
                 rightEye.position.x = 0.18 + eyeShiftX;
@@ -712,7 +664,6 @@
             particles.rotation.y += 0.0006;
             dustParticles.rotation.y -= 0.0004;
             androidParticles.rotation.y += 0.005;
-            
             const auraPulse = 1 + Math.sin(time * 2) * 0.02;
             auraSphere.scale.set(auraPulse, auraPulse, auraPulse);
             
@@ -736,18 +687,14 @@
         // ========== INTERACTION ==========
         const raycaster = new THREE.Raycaster();
         const clickPos = new THREE.Vector2();
-        
         const CUSTOM_REDIRECT_URL = "https://sarrinstituteoftechnology.github.io/Enroll-Now";
         
         function onAndroidClick(event) {
             if (isWalking) return;
-            
             clickPos.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
             clickPos.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
-            
             raycaster.setFromCamera(clickPos, camera);
             const intersects = raycaster.intersectObject(androidGroup, true);
-            
             if (intersects.length > 0) {
                 const ripple = document.createElement('div');
                 ripple.style.position = 'fixed';
@@ -779,16 +726,13 @@
             modal.style.display = 'flex';
             modal.style.alignItems = 'center';
             modal.style.justifyContent = 'center';
-            
             modal.innerHTML = `
                 <div style="background: #0F212A; border-radius: 48px; padding: 45px; max-width: 520px; width: 90%; border: 1px solid #4CAF50; box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4); text-align: center;">
-                    <div style="margin-bottom: 20px;">
-                        <i class="fas fa-robot" style="font-size: 70px; color: #4CAF50;"></i>
-                    </div>
+                    <div style="margin-bottom: 20px;"><i class="fas fa-robot" style="font-size: 70px; color: #4CAF50;"></i></div>
                     <h2 style="color: #FFFFFF; margin: 15px 0 12px; font-size: 1.8rem;">Welcome Back!</h2>
                     <p style="color: #9AAEB9; margin-bottom: 30px; line-height: 1.6;">Continue your journey at SARR Institute of Technology. Your future awaits.</p>
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <button id="modalRedirectBtn" style="background: #4CAF50; border: none; padding: 14px 32px; border-radius: 50px; color: white; font-weight: 600; cursor: pointer; transition: 0.2s;">
+                        <button id="modalRedirectBtn" style="background: #4CAF50; border: none; padding: 14px 32px; border-radius: 50px; color: white; font-weight: 600; cursor: pointer;">
                             <i class="fas fa-paper-plane"></i> Continue Application
                         </button>
                         <button id="modalCloseBtn" style="background: transparent; border: 2px solid #4CAF50; padding: 12px 28px; border-radius: 50px; color: #4CAF50; cursor: pointer; font-weight: 500;">
@@ -797,85 +741,71 @@
                     </div>
                 </div>
             `;
-            
             document.body.appendChild(modal);
-            
-            document.getElementById('modalRedirectBtn').onclick = () => {
-                window.location.href = CUSTOM_REDIRECT_URL;
-            };
-            
-            document.getElementById('modalCloseBtn').onclick = () => {
-                modal.remove();
-            };
+            document.getElementById('modalRedirectBtn').onclick = () => window.location.href = CUSTOM_REDIRECT_URL;
+            document.getElementById('modalCloseBtn').onclick = () => modal.remove();
         }
         
         const rippleStyle = document.createElement('style');
-        rippleStyle.textContent = `
-            @keyframes rippleExpand {
-                0% { transform: scale(0); opacity: 0.6; }
-                100% { transform: scale(25); opacity: 0; }
-            }
-        `;
+        rippleStyle.textContent = `@keyframes rippleExpand { 0% { transform: scale(0); opacity: 0.6; } 100% { transform: scale(25); opacity: 0; } }`;
         document.head.appendChild(rippleStyle);
-        
         window.addEventListener('click', onAndroidClick);
-        
-        // ========== RESIZE ==========
         window.addEventListener('resize', () => {
             camera.aspect = container.clientWidth / container.clientHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(container.clientWidth, container.clientHeight);
         });
         
-        // ========== COUNTDOWN TIMER ==========
-        function getStoredTargetTime() {
-            let targetTime = localStorage.getItem('sarr_reply_target_soft');
-            if (!targetTime) {
-                const randomHours = Math.floor(Math.random() * (8 - 3 + 1) + 3);
-                targetTime = new Date().getTime() + (randomHours * 60 * 60 * 1000);
-                localStorage.setItem('sarr_reply_target_soft', targetTime);
-                localStorage.setItem('sarr_reply_hours_soft', randomHours);
+        // ========== PERSISTENT 24-HOUR COUNTDOWN ==========
+        const COUNTDOWN_STORAGE_KEY = 'sarr_24hr_countdown_start';
+        const COUNTDOWN_DURATION_HOURS = 24;
+        
+        function getOrCreateCountdownStartTime() {
+            let startTime = localStorage.getItem(COUNTDOWN_STORAGE_KEY);
+            if (!startTime) {
+                startTime = Date.now();
+                localStorage.setItem(COUNTDOWN_STORAGE_KEY, startTime);
             }
-            return parseInt(targetTime);
+            return parseInt(startTime);
         }
         
-        function getStoredReplyHours() {
-            let hours = localStorage.getItem('sarr_reply_hours_soft');
-            if (!hours) {
-                hours = Math.floor(Math.random() * (8 - 3 + 1) + 3);
-                localStorage.setItem('sarr_reply_hours_soft', hours);
-            }
-            return parseInt(hours);
+        function formatTimeUnit(value) {
+            return value.toString().padStart(2, '0');
         }
         
-        function updateCountdown() {
-            const targetTime = getStoredTargetTime();
-            const now = new Date().getTime();
-            const distance = targetTime - now;
+        function updateCountdownDisplay() {
+            const startTime = getOrCreateCountdownStartTime();
+            const now = Date.now();
+            const elapsed = now - startTime;
+            const totalDurationMs = COUNTDOWN_DURATION_HOURS * 60 * 60 * 1000;
+            const remaining = Math.max(0, totalDurationMs - elapsed);
+            
+            const hoursLeft = Math.floor(remaining / (1000 * 60 * 60));
+            const minutesLeft = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsLeft = Math.floor((remaining % (1000 * 60)) / 1000);
             
             const hoursEl = document.getElementById('hours');
             const minutesEl = document.getElementById('minutes');
             const secondsEl = document.getElementById('seconds');
             const replyTimeEl = document.getElementById('replyTime');
             
-            if (distance < 0) {
+            if (hoursEl) hoursEl.textContent = formatTimeUnit(hoursLeft);
+            if (minutesEl) minutesEl.textContent = formatTimeUnit(minutesLeft);
+            if (secondsEl) secondsEl.textContent = formatTimeUnit(secondsLeft);
+            
+            if (replyTimeEl) {
+                if (remaining <= 0) {
+                    replyTimeEl.textContent = "Ready!";
+                } else {
+                    replyTimeEl.textContent = `${hoursLeft} Hours ${minutesLeft} Min`;
+                }
+            }
+            
+            if (remaining <= 0) {
                 if (hoursEl) hoursEl.textContent = '00';
                 if (minutesEl) minutesEl.textContent = '00';
                 if (secondsEl) secondsEl.textContent = '00';
-                if (replyTimeEl) replyTimeEl.textContent = 'Ready!';
-                return;
             }
-            
-            const hoursLeft = Math.floor(distance / (1000 * 60 * 60));
-            const minutesLeft = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const secondsLeft = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            if (hoursEl) hoursEl.textContent = hoursLeft.toString().padStart(2, '0');
-            if (minutesEl) minutesEl.textContent = minutesLeft.toString().padStart(2, '0');
-            if (secondsEl) secondsEl.textContent = secondsLeft.toString().padStart(2, '0');
-            
-            const totalHours = getStoredReplyHours();
-            if (replyTimeEl) replyTimeEl.textContent = `${totalHours} Hours ${minutesLeft} Min`;
         }
         
         // ========== URL PARAMETERS ==========
@@ -890,11 +820,7 @@
         
         function formatName(name) {
             if (!name) return 'Valued Applicant';
-            try {
-                return decodeURIComponent(name);
-            } catch (e) {
-                return name;
-            }
+            try { return decodeURIComponent(name); } catch(e) { return name; }
         }
         
         document.addEventListener('DOMContentLoaded', () => {
@@ -921,18 +847,15 @@
                 email: params.email
             }));
             
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+            updateCountdownDisplay();
+            setInterval(updateCountdownDisplay, 1000);
             
             const backBtn = document.getElementById('backToFormBtn');
             const trackBtn = document.getElementById('trackBtn');
             
-            if (backBtn) backBtn.onclick = () => {
-                window.location.href = CUSTOM_REDIRECT_URL;
-            };
-            
+            if (backBtn) backBtn.onclick = () => { window.location.href = CUSTOM_REDIRECT_URL; };
             if (trackBtn) trackBtn.onclick = () => {
-                alert(`📋 Application ID: ${applicationId}\n👤 Name: ${studentName}\n⏰ Expected Response: Within ${getStoredReplyHours()} hours\n\nPlease check your email for updates.`);
+                alert(`Application ID: ${applicationId}\nName: ${studentName}\nResponse Time: Within 24 hours\n\nPlease check your email for updates.`);
             };
         });
     </script>
