@@ -853,9 +853,16 @@
             const backBtn = document.getElementById('backToFormBtn');
             const trackBtn = document.getElementById('trackBtn');
             
-            if (backBtn) backBtn.onclick = () => { window.location.href = CUSTOM_REDIRECT_URL; };
+            // Back button redirects to enrollment page
+            if (backBtn) backBtn.onclick = () => { 
+                window.location.href = CUSTOM_REDIRECT_URL; 
+            };
+            
+            // Track Status button redirects to tracking portal
             if (trackBtn) trackBtn.onclick = () => {
-                alert(`Application ID: ${applicationId}\nName: ${studentName}\nResponse Time: Within 24 hours\n\nPlease check your email for updates.`);
+                // Pass the application ID and name to the tracking page
+                const trackingUrl = `https://sarrinstituteoftechnology.github.io/Tracking/?appId=${encodeURIComponent(applicationId)}&name=${encodeURIComponent(studentName)}`;
+                window.location.href = trackingUrl;
             };
         });
     </script>
